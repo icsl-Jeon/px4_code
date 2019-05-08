@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: px4_code
+Description: Description of px4_code
+Version: 0.0.0
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib 
+Requires: 

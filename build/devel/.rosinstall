@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/jbs/catkin_ws/src/px4_code/build/devel/setup.sh
