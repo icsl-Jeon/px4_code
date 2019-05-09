@@ -24,7 +24,7 @@ void MavWrapper::ros_init(ros::NodeHandle nh){
     sub_control_pose = nh.subscribe("control_pose",1,&MavWrapper::cb_setpoint,this);
     sub_state =nh.subscribe("/mavros/state", 10, &MavWrapper::cb_state,this);
     pub_setpoint = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 10);
-    pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/mocap/pose",10);    
+    pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose",10);    
 
     // these are to be included in GCS part 
     arming_client=  nh.serviceClient<mavros_msgs::CommandBool>("/mavros/cmd/arming");            
@@ -150,8 +150,7 @@ void MavWrapper::publish_setpoint(){
  * @brief mocap data is replaced with gazebo2rviz package 
  * 
  */
-void MavWrapper::publish_mocap_pose(){    
-
+void MavWrapper::publish_mocap_pose(){      
     pub_cur_pose.publish(pose_cur);
 }
 
