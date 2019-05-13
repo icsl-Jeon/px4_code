@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(px4_code_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/jbs/catkin_ws/src/px4_code/include " STREQUAL " ")
+if(NOT "/home/jbs/catkin_ws/src/px4_code/build/devel/include;/home/jbs/catkin_ws/src/px4_code/include " STREQUAL " ")
   set(px4_code_INCLUDE_DIRS "")
-  set(_include_dirs "/home/jbs/catkin_ws/src/px4_code/include")
+  set(_include_dirs "/home/jbs/catkin_ws/src/px4_code/build/devel/include;/home/jbs/catkin_ws/src/px4_code/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")

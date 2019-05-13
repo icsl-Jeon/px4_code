@@ -1,3 +1,7 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/px4_code_generate_messages_nodejs"
+  "devel/share/gennodejs/ros/px4_code/srv/InitHome.js"
+)
 
 # Per-language clean rules from dependency scanning.
 foreach(lang )

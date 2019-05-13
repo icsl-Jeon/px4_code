@@ -53,3 +53,102 @@ Makefile:126: recipe for target 'cmTC_d1562/fast' failed
 make: *** [cmTC_d1562/fast] Error 2
 
 
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a7b93/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a7b93.dir/build.make CMakeFiles/cmTC_a7b93.dir/build
+make[1]: Entering directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a7b93.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++-5    -I/usr/include/qt4   -o CMakeFiles/cmTC_a7b93.dir/CheckSymbolExists.cxx.o -c /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^
+CMakeFiles/cmTC_a7b93.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_a7b93.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_a7b93.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a7b93/fast' failed
+make: *** [cmTC_a7b93/fast] Error 2
+
+File /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b05b1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b05b1.dir/build.make CMakeFiles/cmTC_b05b1.dir/build
+make[1]: Entering directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b05b1.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++-5    -I/usr/include/qt4   -o CMakeFiles/cmTC_b05b1.dir/CheckSymbolExists.cxx.o -c /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^
+CMakeFiles/cmTC_b05b1.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_b05b1.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_b05b1.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b05b1/fast' failed
+make: *** [cmTC_b05b1/fast] Error 2
+
+File /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fc2da/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fc2da.dir/build.make CMakeFiles/cmTC_fc2da.dir/build
+make[1]: Entering directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_fc2da.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++-5    -I/usr/include/qt4   -o CMakeFiles/cmTC_fc2da.dir/CheckSymbolExists.cxx.o -c /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^
+CMakeFiles/cmTC_fc2da.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_fc2da.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_fc2da.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_fc2da/fast' failed
+make: *** [cmTC_fc2da/fast] Error 2
+
+File /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

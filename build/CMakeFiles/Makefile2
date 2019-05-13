@@ -60,6 +60,43 @@ CMAKE_SOURCE_DIR = /home/jbs/catkin_ws/src/px4_code
 CMAKE_BINARY_DIR = /home/jbs/catkin_ws/src/px4_code/build
 
 #=============================================================================
+# Target rules for target CMakeFiles/mav_gcs_node.dir
+
+# All Build rule for target.
+CMakeFiles/mav_gcs_node.dir/all: CMakeFiles/mav_gcs_node_automoc.dir/all
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/depend
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=12,13,14,15,16,17,18,19 "Built target mav_gcs_node"
+.PHONY : CMakeFiles/mav_gcs_node.dir/all
+
+# Include target in all.
+all: CMakeFiles/mav_gcs_node.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mav_gcs_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mav_gcs_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+.PHONY : CMakeFiles/mav_gcs_node.dir/rule
+
+# Convenience name for target.
+mav_gcs_node: CMakeFiles/mav_gcs_node.dir/rule
+
+.PHONY : mav_gcs_node
+
+# clean rule for target.
+CMakeFiles/mav_gcs_node.dir/clean:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/clean
+.PHONY : CMakeFiles/mav_gcs_node.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/mav_gcs_node.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/px4_code_gennodejs.dir
 
 # All Build rule for target.
@@ -71,7 +108,7 @@ CMakeFiles/px4_code_gennodejs.dir/all: CMakeFiles/px4_code_generate_messages_nod
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_gennodejs.dir/rule
@@ -103,7 +140,7 @@ CMakeFiles/px4_code_genlisp.dir/all: CMakeFiles/px4_code_generate_messages_lisp.
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_genlisp.dir/rule
@@ -135,7 +172,7 @@ CMakeFiles/px4_code_geneus.dir/all: CMakeFiles/px4_code_generate_messages_eus.di
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_geneus.dir/rule
@@ -159,17 +196,18 @@ clean: CMakeFiles/px4_code_geneus.dir/clean
 # Target rules for target CMakeFiles/px4_code_generate_messages_eus.dir
 
 # All Build rule for target.
+CMakeFiles/px4_code_generate_messages_eus.dir/all: CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all
 CMakeFiles/px4_code_generate_messages_eus.dir/all: CMakeFiles/nav_msgs_generate_messages_eus.dir/all
 CMakeFiles/px4_code_generate_messages_eus.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
 CMakeFiles/px4_code_generate_messages_eus.dir/all: CMakeFiles/mavros_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_eus.dir/build.make CMakeFiles/px4_code_generate_messages_eus.dir/depend
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_eus.dir/build.make CMakeFiles/px4_code_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=15 "Built target px4_code_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=26,27 "Built target px4_code_generate_messages_eus"
 .PHONY : CMakeFiles/px4_code_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_generate_messages_eus.dir/rule
@@ -201,7 +239,7 @@ CMakeFiles/px4_code_gencpp.dir/all: CMakeFiles/px4_code_generate_messages_cpp.di
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_gencpp.dir/rule
@@ -225,17 +263,18 @@ clean: CMakeFiles/px4_code_gencpp.dir/clean
 # Target rules for target CMakeFiles/px4_code_generate_messages_cpp.dir
 
 # All Build rule for target.
+CMakeFiles/px4_code_generate_messages_cpp.dir/all: CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all
 CMakeFiles/px4_code_generate_messages_cpp.dir/all: CMakeFiles/mavros_msgs_generate_messages_cpp.dir/all
 CMakeFiles/px4_code_generate_messages_cpp.dir/all: CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 CMakeFiles/px4_code_generate_messages_cpp.dir/all: CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_cpp.dir/build.make CMakeFiles/px4_code_generate_messages_cpp.dir/depend
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_cpp.dir/build.make CMakeFiles/px4_code_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num= "Built target px4_code_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=25 "Built target px4_code_generate_messages_cpp"
 .PHONY : CMakeFiles/px4_code_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_generate_messages_cpp.dir/rule
@@ -252,6 +291,38 @@ CMakeFiles/px4_code_generate_messages_cpp.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/px4_code_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir
+
+# All Build rule for target.
+CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all:
+	$(MAKE) -f CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/build.make CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/depend
+	$(MAKE) -f CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/build.make CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num= "Built target _px4_code_generate_messages_check_deps_InitHome"
+.PHONY : CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+.PHONY : CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/rule
+
+# Convenience name for target.
+_px4_code_generate_messages_check_deps_InitHome: CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/rule
+
+.PHONY : _px4_code_generate_messages_check_deps_InitHome
+
+# clean rule for target.
+CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/clean:
+	$(MAKE) -f CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/build.make CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/clean
+.PHONY : CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/clean
 
 .PHONY : clean
 
@@ -276,7 +347,7 @@ all: CMakeFiles/px4_code_generate_messages.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_generate_messages.dir/rule
@@ -532,7 +603,7 @@ CMakeFiles/px4_code_genpy.dir/all: CMakeFiles/px4_code_generate_messages_py.dir/
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_genpy.dir/rule
@@ -613,6 +684,43 @@ CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/mav_offboard_test_node.dir
+
+# All Build rule for target.
+CMakeFiles/mav_offboard_test_node.dir/all: CMakeFiles/mav_offboard_test_node_automoc.dir/all
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/depend
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=21,22,23 "Built target mav_offboard_test_node"
+.PHONY : CMakeFiles/mav_offboard_test_node.dir/all
+
+# Include target in all.
+all: CMakeFiles/mav_offboard_test_node.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mav_offboard_test_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mav_offboard_test_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+.PHONY : CMakeFiles/mav_offboard_test_node.dir/rule
+
+# Convenience name for target.
+mav_offboard_test_node: CMakeFiles/mav_offboard_test_node.dir/rule
+
+.PHONY : mav_offboard_test_node
+
+# clean rule for target.
+CMakeFiles/mav_offboard_test_node.dir/clean:
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/clean
+.PHONY : CMakeFiles/mav_offboard_test_node.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/mav_offboard_test_node.dir/clean
 
 .PHONY : clean
 
@@ -1164,17 +1272,18 @@ clean: CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 # Target rules for target CMakeFiles/px4_code_generate_messages_nodejs.dir
 
 # All Build rule for target.
+CMakeFiles/px4_code_generate_messages_nodejs.dir/all: CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all
 CMakeFiles/px4_code_generate_messages_nodejs.dir/all: CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 CMakeFiles/px4_code_generate_messages_nodejs.dir/all: CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all
 CMakeFiles/px4_code_generate_messages_nodejs.dir/all: CMakeFiles/mavros_msgs_generate_messages_nodejs.dir/all
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_nodejs.dir/build.make CMakeFiles/px4_code_generate_messages_nodejs.dir/depend
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_nodejs.dir/build.make CMakeFiles/px4_code_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num= "Built target px4_code_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=29 "Built target px4_code_generate_messages_nodejs"
 .PHONY : CMakeFiles/px4_code_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_generate_messages_nodejs.dir/rule
@@ -1230,17 +1339,18 @@ clean: CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
 # Target rules for target CMakeFiles/px4_code_generate_messages_py.dir
 
 # All Build rule for target.
+CMakeFiles/px4_code_generate_messages_py.dir/all: CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all
 CMakeFiles/px4_code_generate_messages_py.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
 CMakeFiles/px4_code_generate_messages_py.dir/all: CMakeFiles/nav_msgs_generate_messages_py.dir/all
 CMakeFiles/px4_code_generate_messages_py.dir/all: CMakeFiles/mavros_msgs_generate_messages_py.dir/all
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_py.dir/build.make CMakeFiles/px4_code_generate_messages_py.dir/depend
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_py.dir/build.make CMakeFiles/px4_code_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num= "Built target px4_code_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=30,31 "Built target px4_code_generate_messages_py"
 .PHONY : CMakeFiles/px4_code_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_generate_messages_py.dir/rule
@@ -1680,17 +1790,18 @@ clean: CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 # Target rules for target CMakeFiles/px4_code_generate_messages_lisp.dir
 
 # All Build rule for target.
+CMakeFiles/px4_code_generate_messages_lisp.dir/all: CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/all
 CMakeFiles/px4_code_generate_messages_lisp.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 CMakeFiles/px4_code_generate_messages_lisp.dir/all: CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
 CMakeFiles/px4_code_generate_messages_lisp.dir/all: CMakeFiles/mavros_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_lisp.dir/build.make CMakeFiles/px4_code_generate_messages_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_lisp.dir/build.make CMakeFiles/px4_code_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num= "Built target px4_code_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=28 "Built target px4_code_generate_messages_lisp"
 .PHONY : CMakeFiles/px4_code_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_code_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/px4_code_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
 .PHONY : CMakeFiles/px4_code_generate_messages_lisp.dir/rule
@@ -2479,43 +2590,6 @@ clean: CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/mav_wrapper_node.dir
-
-# All Build rule for target.
-CMakeFiles/mav_wrapper_node.dir/all:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/depend
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=12,13,14 "Built target mav_wrapper_node"
-.PHONY : CMakeFiles/mav_wrapper_node.dir/all
-
-# Include target in all.
-all: CMakeFiles/mav_wrapper_node.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/mav_wrapper_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mav_wrapper_node.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
-.PHONY : CMakeFiles/mav_wrapper_node.dir/rule
-
-# Convenience name for target.
-mav_wrapper_node: CMakeFiles/mav_wrapper_node.dir/rule
-
-.PHONY : mav_wrapper_node
-
-# clean rule for target.
-CMakeFiles/mav_wrapper_node.dir/clean:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/clean
-.PHONY : CMakeFiles/mav_wrapper_node.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/mav_wrapper_node.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/geographic_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
@@ -2736,6 +2810,70 @@ CMakeFiles/uuid_msgs_generate_messages_py.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/uuid_msgs_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/mav_gcs_node_automoc.dir
+
+# All Build rule for target.
+CMakeFiles/mav_gcs_node_automoc.dir/all:
+	$(MAKE) -f CMakeFiles/mav_gcs_node_automoc.dir/build.make CMakeFiles/mav_gcs_node_automoc.dir/depend
+	$(MAKE) -f CMakeFiles/mav_gcs_node_automoc.dir/build.make CMakeFiles/mav_gcs_node_automoc.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=20 "Built target mav_gcs_node_automoc"
+.PHONY : CMakeFiles/mav_gcs_node_automoc.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mav_gcs_node_automoc.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mav_gcs_node_automoc.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+.PHONY : CMakeFiles/mav_gcs_node_automoc.dir/rule
+
+# Convenience name for target.
+mav_gcs_node_automoc: CMakeFiles/mav_gcs_node_automoc.dir/rule
+
+.PHONY : mav_gcs_node_automoc
+
+# clean rule for target.
+CMakeFiles/mav_gcs_node_automoc.dir/clean:
+	$(MAKE) -f CMakeFiles/mav_gcs_node_automoc.dir/build.make CMakeFiles/mav_gcs_node_automoc.dir/clean
+.PHONY : CMakeFiles/mav_gcs_node_automoc.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/mav_gcs_node_automoc.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/mav_offboard_test_node_automoc.dir
+
+# All Build rule for target.
+CMakeFiles/mav_offboard_test_node_automoc.dir/all:
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node_automoc.dir/build.make CMakeFiles/mav_offboard_test_node_automoc.dir/depend
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node_automoc.dir/build.make CMakeFiles/mav_offboard_test_node_automoc.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=24 "Built target mav_offboard_test_node_automoc"
+.PHONY : CMakeFiles/mav_offboard_test_node_automoc.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mav_offboard_test_node_automoc.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mav_offboard_test_node_automoc.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles 0
+.PHONY : CMakeFiles/mav_offboard_test_node_automoc.dir/rule
+
+# Convenience name for target.
+mav_offboard_test_node_automoc: CMakeFiles/mav_offboard_test_node_automoc.dir/rule
+
+.PHONY : mav_offboard_test_node_automoc
+
+# clean rule for target.
+CMakeFiles/mav_offboard_test_node_automoc.dir/clean:
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node_automoc.dir/build.make CMakeFiles/mav_offboard_test_node_automoc.dir/clean
+.PHONY : CMakeFiles/mav_offboard_test_node_automoc.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/mav_offboard_test_node_automoc.dir/clean
 
 .PHONY : clean
 

@@ -3,6 +3,6 @@ prefix=/home/jbs/catkin_ws/src/px4_code/build/devel
 Name: px4_code
 Description: Description of px4_code
 Version: 0.0.0
-Cflags: -I/home/jbs/catkin_ws/src/px4_code/include
+Cflags: -I/home/jbs/catkin_ws/src/px4_code/build/devel/include -I/home/jbs/catkin_ws/src/px4_code/include
 Libs: -L/home/jbs/catkin_ws/src/px4_code/build/devel/lib 
 Requires: 

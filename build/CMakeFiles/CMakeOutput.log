@@ -580,3 +580,31 @@ Linking C executable cmTC_38621
 make[1]: Leaving directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
 
 
+Determining if the Q_WS_X11 exist passed with the following output:
+Change Dir: /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_00fc0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_00fc0.dir/build.make CMakeFiles/cmTC_00fc0.dir/build
+make[1]: Entering directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_00fc0.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++-5    -I/usr/include/qt4   -o CMakeFiles/cmTC_00fc0.dir/CheckSymbolExists.cxx.o -c /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_00fc0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_00fc0.dir/link.txt --verbose=1
+/usr/bin/g++-5        CMakeFiles/cmTC_00fc0.dir/CheckSymbolExists.cxx.o  -o cmTC_00fc0 -rdynamic 
+make[1]: Leaving directory '/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp'
+
+File /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_X11
+  return ((int*)(&Q_WS_X11))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

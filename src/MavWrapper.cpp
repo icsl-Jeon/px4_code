@@ -1,38 +1,27 @@
 #include "px4_code/MavWrapper.h"
 
 
-MavWrapper::MavWrapper(){
-
-}
-
-MavWrapper::~MavWrapper(){
-
-}
-/**
- * @brief ros communication init. The components are not inclucded in the constructor for qt integration
- * 
- * @param nh 
- */
-void MavWrapper::ros_init(ros::NodeHandle nh){
-
-
+MavWrapper::MavWrapper():nh("~"){    
+    // parameter parsing 
     nh.param<string>("mav_frame_id",mav_frame_id,"/iris__base_link");
     nh.param<string>("world_frame_id",world_frame_id,"/world");
+    nh.param<double>("hovering_height",hovering_height,1.0);
+    double time_out; // sec 
+    nh.param<double>("init_timeout",time_out,2.0);
+    mav_init_timeout = ros::Duration(time_out);        
+    tf_listener = new (tf::TransformListener);
 
     // ros comm 
-    tf_listener = new (tf::TransformListener);
     sub_control_pose = nh.subscribe("control_pose",1,&MavWrapper::cb_setpoint,this);
     sub_state =nh.subscribe("/mavros/state", 10, &MavWrapper::cb_state,this);
     pub_setpoint = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 10);
-    pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose",10);    
-
-    // these are to be included in GCS part 
-    arming_client=  nh.serviceClient<mavros_msgs::CommandBool>("/mavros/cmd/arming");            
-    set_mode_client = nh.serviceClient<mavros_msgs::SetMode>("/mavros/set_mode");
-
-    pose_init.header.frame_id = pose_des.header.frame_id = pose_cur.header.frame_id = world_frame_id;
-    
+    pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose",10);
+    server_init_home = nh.advertiseService("/mav_wrapper/init_home",&MavWrapper::init_home_callback,this);        
 }
+
+MavWrapper::~MavWrapper(){
+    delete tf_listener;
+}   
 
 bool MavWrapper::update_tf(){
     
@@ -58,53 +47,18 @@ bool MavWrapper::update_tf(){
         
     }
     catch (tf::TransformException ex){
-  
-        ROS_ERROR_ONCE("[Mav Wrapper] tf of mav does not exist. ",ex.what());  
+        ROS_ERROR_ONCE("[Mav Wrapper] tf of mav does not exist.",ex.what());  
         return false;
     }
 }
 
-
-bool MavWrapper::set_offboard(){
-    mavros_msgs::SetMode offb_set_mode;
-    offb_set_mode.request.custom_mode = "OFFBOARD";
-    bool is_success = set_mode_client.call(offb_set_mode) and offb_set_mode.response.mode_sent;
-    ROS_INFO("Offboard requested.");    
-    if (is_success){
-        ROS_INFO("Switched to offboard mode!");
-        is_offboard = true;
-    }
-
-    return is_success;
-}
-
-bool MavWrapper::arming(){
-
-    if (is_offboard){
-
-        mavros_msgs::CommandBool arm_cmd;
-        arm_cmd.request.value = true;
-
-        bool is_success = arming_client.call(arm_cmd) and arm_cmd.response.success;
-        ROS_INFO("Arming requested.");            
-        if (is_success){
-            ROS_INFO("Vehicle armed!");
-            is_armed = true;
-        }
-        return is_success;
-    }else{
-
-        ROS_WARN("Arming requested but still not offboard.");
-    }
-    
-}
 /**
  * @brief receive the setpoint from other planning node 
  * 
  * @param pose 
  */
 void MavWrapper::cb_setpoint(geometry_msgs::PoseStampedConstPtr pose){
-
+    pose_des_planner = *pose;
 }
 /**
  * @brief receive px4 state information from mavros  
@@ -114,46 +68,66 @@ void MavWrapper::cb_setpoint(geometry_msgs::PoseStampedConstPtr pose){
 void MavWrapper::cb_state(mavros_msgs::StateConstPtr state){
     mav_state = *state;
     is_mavros_connected = state->connected;
-    is_offboard = state->mode == "OFFBOARD";
-    
+    is_offboard = state->mode == "OFFBOARD";   
 }
 
-/**
- * @brief Initializing the takeoff point of MAV with the current pose
- * 
- */
-void MavWrapper::mav_init(){
 
+bool MavWrapper::mav_init(){
     if (is_tf_recieved){
-        ROS_INFO("Initializing the takeoff point with the current pose");
-        pose_init = pose_cur;
+        pose_des_keyboard = pose_cur;        
         is_init_mav = true;
+        ROS_INFO("Initializing the homing point with the current pose");
+        return true;
     }
     else 
-        ROS_WARN("tf information has not been recieved yet.");
+        {ROS_WARN("tf information has not been recieved yet."); return false;};
 }
 
-
-void MavWrapper::update_hovering(double hovering_height){
-    pose_init.pose.position.z = hovering_height;
-    pose_des = pose_init;
-}
-
-/**
- * @brief publish the current setpoint. 
- * 
- */
 void MavWrapper::publish_setpoint(){    
-    pub_setpoint.publish(pose_des);
+
+    if (mode == 0) // keyboard mode (default)  
+        pub_setpoint.publish(pose_des_keyboard);
+    else // planner mode (changed mode)
+        pub_setpoint.publish(pose_des_planner);
+
 }
-/**
- * @brief mocap data is replaced with gazebo2rviz package 
- * 
- */
-void MavWrapper::publish_mocap_pose(){      
+void MavWrapper::publish_externally_estimated_pose(){      
     pub_cur_pose.publish(pose_cur);
 }
 
+bool MavWrapper::init_home_callback(px4_code::InitHomeRequest & req,px4_code::InitHomeResponse& resp){
+    resp.is_success = mav_init();
+    return true;
+};
+
+void MavWrapper::run(){
+    
+    // Phase 1 
+    // initialize the mav homing postion from mav_wrapper side 
+    ros::Rate rate(40);
+    ros::Time last_request = ros::Time::now();
+    
+    while(ros::ok()){
+        
+        // regular routine
+        update_tf();
+        publish_externally_estimated_pose(); // the pose published will be used for mavros
+        
+        // still not initialized
+        if(not is_init_mav)  
+            mav_init();
+        // If it is initialized do the followings 
+        else{
+            if (is_mavros_connected ) 
+            publish_setpoint();
+            publish_externally_estimated_pose();
+        }
+
+        ros::spinOnce();
+        rate.sleep();
+    }
+    
+}
 
 
 

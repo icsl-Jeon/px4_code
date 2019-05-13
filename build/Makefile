@@ -166,6 +166,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named mav_gcs_node
+
+# Build rule for target.
+mav_gcs_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mav_gcs_node
+.PHONY : mav_gcs_node
+
+# fast build rule for target.
+mav_gcs_node/fast:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/build
+.PHONY : mav_gcs_node/fast
+
+#=============================================================================
 # Target rules for targets named px4_code_gennodejs
 
 # Build rule for target.
@@ -242,6 +255,19 @@ px4_code_generate_messages_cpp: cmake_check_build_system
 px4_code_generate_messages_cpp/fast:
 	$(MAKE) -f CMakeFiles/px4_code_generate_messages_cpp.dir/build.make CMakeFiles/px4_code_generate_messages_cpp.dir/build
 .PHONY : px4_code_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named _px4_code_generate_messages_check_deps_InitHome
+
+# Build rule for target.
+_px4_code_generate_messages_check_deps_InitHome: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _px4_code_generate_messages_check_deps_InitHome
+.PHONY : _px4_code_generate_messages_check_deps_InitHome
+
+# fast build rule for target.
+_px4_code_generate_messages_check_deps_InitHome/fast:
+	$(MAKE) -f CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/build.make CMakeFiles/_px4_code_generate_messages_check_deps_InitHome.dir/build
+.PHONY : _px4_code_generate_messages_check_deps_InitHome/fast
 
 #=============================================================================
 # Target rules for targets named px4_code_generate_messages
@@ -385,6 +411,19 @@ rosgraph_msgs_generate_messages_py: cmake_check_build_system
 rosgraph_msgs_generate_messages_py/fast:
 	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named mav_offboard_test_node
+
+# Build rule for target.
+mav_offboard_test_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mav_offboard_test_node
+.PHONY : mav_offboard_test_node
+
+# fast build rule for target.
+mav_offboard_test_node/fast:
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/build
+.PHONY : mav_offboard_test_node/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_nodejs
@@ -1141,19 +1180,6 @@ sensor_msgs_generate_messages_py/fast:
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named mav_wrapper_node
-
-# Build rule for target.
-mav_wrapper_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mav_wrapper_node
-.PHONY : mav_wrapper_node
-
-# fast build rule for target.
-mav_wrapper_node/fast:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/build
-.PHONY : mav_wrapper_node/fast
-
-#=============================================================================
 # Target rules for targets named geographic_msgs_generate_messages_eus
 
 # Build rule for target.
@@ -1245,6 +1271,32 @@ uuid_msgs_generate_messages_py/fast:
 .PHONY : uuid_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named mav_gcs_node_automoc
+
+# Build rule for target.
+mav_gcs_node_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mav_gcs_node_automoc
+.PHONY : mav_gcs_node_automoc
+
+# fast build rule for target.
+mav_gcs_node_automoc/fast:
+	$(MAKE) -f CMakeFiles/mav_gcs_node_automoc.dir/build.make CMakeFiles/mav_gcs_node_automoc.dir/build
+.PHONY : mav_gcs_node_automoc/fast
+
+#=============================================================================
+# Target rules for targets named mav_offboard_test_node_automoc
+
+# Build rule for target.
+mav_offboard_test_node_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mav_offboard_test_node_automoc
+.PHONY : mav_offboard_test_node_automoc
+
+# fast build rule for target.
+mav_offboard_test_node_automoc/fast:
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node_automoc.dir/build.make CMakeFiles/mav_offboard_test_node_automoc.dir/build
+.PHONY : mav_offboard_test_node_automoc/fast
+
+#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -1296,13 +1348,148 @@ gtest_main/fast:
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+qt_src/px4_gcs/main.o: qt_src/px4_gcs/main.cpp.o
+
+.PHONY : qt_src/px4_gcs/main.o
+
+# target to build an object file
+qt_src/px4_gcs/main.cpp.o:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/main.cpp.o
+.PHONY : qt_src/px4_gcs/main.cpp.o
+
+qt_src/px4_gcs/main.i: qt_src/px4_gcs/main.cpp.i
+
+.PHONY : qt_src/px4_gcs/main.i
+
+# target to preprocess a source file
+qt_src/px4_gcs/main.cpp.i:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/main.cpp.i
+.PHONY : qt_src/px4_gcs/main.cpp.i
+
+qt_src/px4_gcs/main.s: qt_src/px4_gcs/main.cpp.s
+
+.PHONY : qt_src/px4_gcs/main.s
+
+# target to generate assembly for a file
+qt_src/px4_gcs/main.cpp.s:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/main.cpp.s
+.PHONY : qt_src/px4_gcs/main.cpp.s
+
+qt_src/px4_gcs/mainwindow.o: qt_src/px4_gcs/mainwindow.cpp.o
+
+.PHONY : qt_src/px4_gcs/mainwindow.o
+
+# target to build an object file
+qt_src/px4_gcs/mainwindow.cpp.o:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/mainwindow.cpp.o
+.PHONY : qt_src/px4_gcs/mainwindow.cpp.o
+
+qt_src/px4_gcs/mainwindow.i: qt_src/px4_gcs/mainwindow.cpp.i
+
+.PHONY : qt_src/px4_gcs/mainwindow.i
+
+# target to preprocess a source file
+qt_src/px4_gcs/mainwindow.cpp.i:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/mainwindow.cpp.i
+.PHONY : qt_src/px4_gcs/mainwindow.cpp.i
+
+qt_src/px4_gcs/mainwindow.s: qt_src/px4_gcs/mainwindow.cpp.s
+
+.PHONY : qt_src/px4_gcs/mainwindow.s
+
+# target to generate assembly for a file
+qt_src/px4_gcs/mainwindow.cpp.s:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/mainwindow.cpp.s
+.PHONY : qt_src/px4_gcs/mainwindow.cpp.s
+
+qt_src/px4_gcs/moc_mainwindow.o: qt_src/px4_gcs/moc_mainwindow.cxx.o
+
+.PHONY : qt_src/px4_gcs/moc_mainwindow.o
+
+# target to build an object file
+qt_src/px4_gcs/moc_mainwindow.cxx.o:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_mainwindow.cxx.o
+.PHONY : qt_src/px4_gcs/moc_mainwindow.cxx.o
+
+qt_src/px4_gcs/moc_mainwindow.i: qt_src/px4_gcs/moc_mainwindow.cxx.i
+
+.PHONY : qt_src/px4_gcs/moc_mainwindow.i
+
+# target to preprocess a source file
+qt_src/px4_gcs/moc_mainwindow.cxx.i:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_mainwindow.cxx.i
+.PHONY : qt_src/px4_gcs/moc_mainwindow.cxx.i
+
+qt_src/px4_gcs/moc_mainwindow.s: qt_src/px4_gcs/moc_mainwindow.cxx.s
+
+.PHONY : qt_src/px4_gcs/moc_mainwindow.s
+
+# target to generate assembly for a file
+qt_src/px4_gcs/moc_mainwindow.cxx.s:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_mainwindow.cxx.s
+.PHONY : qt_src/px4_gcs/moc_mainwindow.cxx.s
+
+qt_src/px4_gcs/moc_qnode.o: qt_src/px4_gcs/moc_qnode.cxx.o
+
+.PHONY : qt_src/px4_gcs/moc_qnode.o
+
+# target to build an object file
+qt_src/px4_gcs/moc_qnode.cxx.o:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_qnode.cxx.o
+.PHONY : qt_src/px4_gcs/moc_qnode.cxx.o
+
+qt_src/px4_gcs/moc_qnode.i: qt_src/px4_gcs/moc_qnode.cxx.i
+
+.PHONY : qt_src/px4_gcs/moc_qnode.i
+
+# target to preprocess a source file
+qt_src/px4_gcs/moc_qnode.cxx.i:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_qnode.cxx.i
+.PHONY : qt_src/px4_gcs/moc_qnode.cxx.i
+
+qt_src/px4_gcs/moc_qnode.s: qt_src/px4_gcs/moc_qnode.cxx.s
+
+.PHONY : qt_src/px4_gcs/moc_qnode.s
+
+# target to generate assembly for a file
+qt_src/px4_gcs/moc_qnode.cxx.s:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_qnode.cxx.s
+.PHONY : qt_src/px4_gcs/moc_qnode.cxx.s
+
+qt_src/px4_gcs/qnode.o: qt_src/px4_gcs/qnode.cpp.o
+
+.PHONY : qt_src/px4_gcs/qnode.o
+
+# target to build an object file
+qt_src/px4_gcs/qnode.cpp.o:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/qnode.cpp.o
+.PHONY : qt_src/px4_gcs/qnode.cpp.o
+
+qt_src/px4_gcs/qnode.i: qt_src/px4_gcs/qnode.cpp.i
+
+.PHONY : qt_src/px4_gcs/qnode.i
+
+# target to preprocess a source file
+qt_src/px4_gcs/qnode.cpp.i:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/qnode.cpp.i
+.PHONY : qt_src/px4_gcs/qnode.cpp.i
+
+qt_src/px4_gcs/qnode.s: qt_src/px4_gcs/qnode.cpp.s
+
+.PHONY : qt_src/px4_gcs/qnode.s
+
+# target to generate assembly for a file
+qt_src/px4_gcs/qnode.cpp.s:
+	$(MAKE) -f CMakeFiles/mav_gcs_node.dir/build.make CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/qnode.cpp.s
+.PHONY : qt_src/px4_gcs/qnode.cpp.s
+
 src/MavWrapper.o: src/MavWrapper.cpp.o
 
 .PHONY : src/MavWrapper.o
 
 # target to build an object file
 src/MavWrapper.cpp.o:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.o
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/MavWrapper.cpp.o
 .PHONY : src/MavWrapper.cpp.o
 
 src/MavWrapper.i: src/MavWrapper.cpp.i
@@ -1311,7 +1498,7 @@ src/MavWrapper.i: src/MavWrapper.cpp.i
 
 # target to preprocess a source file
 src/MavWrapper.cpp.i:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.i
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/MavWrapper.cpp.i
 .PHONY : src/MavWrapper.cpp.i
 
 src/MavWrapper.s: src/MavWrapper.cpp.s
@@ -1320,7 +1507,7 @@ src/MavWrapper.s: src/MavWrapper.cpp.s
 
 # target to generate assembly for a file
 src/MavWrapper.cpp.s:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.s
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/MavWrapper.cpp.s
 .PHONY : src/MavWrapper.cpp.s
 
 src/test_offboard_node.o: src/test_offboard_node.cpp.o
@@ -1329,7 +1516,7 @@ src/test_offboard_node.o: src/test_offboard_node.cpp.o
 
 # target to build an object file
 src/test_offboard_node.cpp.o:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/test_offboard_node.cpp.o
 .PHONY : src/test_offboard_node.cpp.o
 
 src/test_offboard_node.i: src/test_offboard_node.cpp.i
@@ -1338,7 +1525,7 @@ src/test_offboard_node.i: src/test_offboard_node.cpp.i
 
 # target to preprocess a source file
 src/test_offboard_node.cpp.i:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.i
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/test_offboard_node.cpp.i
 .PHONY : src/test_offboard_node.cpp.i
 
 src/test_offboard_node.s: src/test_offboard_node.cpp.s
@@ -1347,7 +1534,7 @@ src/test_offboard_node.s: src/test_offboard_node.cpp.s
 
 # target to generate assembly for a file
 src/test_offboard_node.cpp.s:
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.s
+	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/test_offboard_node.cpp.s
 .PHONY : src/test_offboard_node.cpp.s
 
 # Help Target
@@ -1358,12 +1545,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... install/local"
+	@echo "... mav_gcs_node"
 	@echo "... px4_code_gennodejs"
 	@echo "... px4_code_genlisp"
 	@echo "... px4_code_geneus"
 	@echo "... px4_code_generate_messages_eus"
 	@echo "... px4_code_gencpp"
 	@echo "... px4_code_generate_messages_cpp"
+	@echo "... _px4_code_generate_messages_check_deps_InitHome"
 	@echo "... px4_code_generate_messages"
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... tf2_msgs_generate_messages_lisp"
@@ -1376,6 +1565,7 @@ help:
 	@echo "... px4_code_genpy"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... mav_offboard_test_node"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
@@ -1438,7 +1628,6 @@ help:
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_py"
-	@echo "... mav_wrapper_node"
 	@echo "... geographic_msgs_generate_messages_eus"
 	@echo "... nav_msgs_generate_messages_cpp"
 	@echo "... geographic_msgs_generate_messages_nodejs"
@@ -1446,10 +1635,27 @@ help:
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... uuid_msgs_generate_messages_eus"
 	@echo "... uuid_msgs_generate_messages_py"
+	@echo "... mav_gcs_node_automoc"
+	@echo "... mav_offboard_test_node_automoc"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... qt_src/px4_gcs/main.o"
+	@echo "... qt_src/px4_gcs/main.i"
+	@echo "... qt_src/px4_gcs/main.s"
+	@echo "... qt_src/px4_gcs/mainwindow.o"
+	@echo "... qt_src/px4_gcs/mainwindow.i"
+	@echo "... qt_src/px4_gcs/mainwindow.s"
+	@echo "... qt_src/px4_gcs/moc_mainwindow.o"
+	@echo "... qt_src/px4_gcs/moc_mainwindow.i"
+	@echo "... qt_src/px4_gcs/moc_mainwindow.s"
+	@echo "... qt_src/px4_gcs/moc_qnode.o"
+	@echo "... qt_src/px4_gcs/moc_qnode.i"
+	@echo "... qt_src/px4_gcs/moc_qnode.s"
+	@echo "... qt_src/px4_gcs/qnode.o"
+	@echo "... qt_src/px4_gcs/qnode.i"
+	@echo "... qt_src/px4_gcs/qnode.s"
 	@echo "... src/MavWrapper.o"
 	@echo "... src/MavWrapper.i"
 	@echo "... src/MavWrapper.s"
