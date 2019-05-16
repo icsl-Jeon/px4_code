@@ -4,7 +4,7 @@ ___
 
 
 
-<img src="https://github.com/icsl-Jeon/traj_gen/blob/master/img/manual.gif">
+<img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/manual.gif">
 
 Visit here for instruction: 
 
@@ -12,13 +12,13 @@ https://www.youtube.com/watch?v=9QvqmMlA_oY
 
 ## Introduction 
 
-<img src="https://github.com/icsl-Jeon/traj_gen/blob/master/img/mav_wrapper_diagram.png">
+<img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/mav_wrapper_diagram.png">
 
 This package is a module for px4 position control from user input or trajectory planner. Currently, SITL (refer mavros and px4 for details) was validated with gazebo.  The package implemented two nodes: 1) gcs with gui(mav_gcs_node) and 2) wrapping module(mav_wrapping_node).  
 
 
 
-<img src="https://github.com/icsl-Jeon/traj_gen/blob/master/img/main_ui.png">
+<img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/main_ui.png">
 
 ## Installation 
 
