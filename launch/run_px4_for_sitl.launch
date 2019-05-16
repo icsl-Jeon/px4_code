@@ -25,6 +25,7 @@
 </include>
 
 
+
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find px4_code)/rviz/rviz.rviz"/>
 
 </launch>

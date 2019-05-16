@@ -10,9 +10,9 @@ MavWrapper::MavWrapper():nh("~"){
     nh.param<double>("init_timeout",time_out,2.0);
     mav_init_timeout = ros::Duration(time_out);        
     tf_listener = new (tf::TransformListener);
-
+    
     // ros comm 
-    sub_control_pose = nh.subscribe("control_pose",1,&MavWrapper::cb_setpoint,this);
+    sub_control_pose = nh.subscribe("/mav_wrapper/setpoint_planning",1,&MavWrapper::cb_setpoint,this);
     sub_state =nh.subscribe("/mavros/state", 10, &MavWrapper::cb_state,this);
     pub_setpoint = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 10);
     pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose",10);
@@ -61,6 +61,7 @@ bool MavWrapper::update_tf(){
  * @param pose 
  */
 void MavWrapper::cb_setpoint(geometry_msgs::PoseStampedConstPtr pose){
+    is_planning_received = true;
     pose_des_planner = *pose;
 }
 /**
@@ -85,7 +86,6 @@ bool MavWrapper::mav_init(){
     else 
         {ROS_WARN("[Mav Wrapper] tf information has not been recieved yet."); return false;};
 }
-
 void MavWrapper::publish_setpoint(){    
 
     if (mode == 0) // keyboard mode (default)  
@@ -160,8 +160,16 @@ bool MavWrapper::keyboard_callback(px4_code::KeyboardInputRequest & req,px4_code
 bool MavWrapper::swtich_mode_callback(px4_code::SwitchModeRequest & req, px4_code::SwitchModeResponse & resp){
     // keyboard mode requested 
     if (req.mode == 0){
-        mode = 0;
-        return true;
+        if(mav_init()){
+            mode = 0;
+            return true;}
+        else{
+            ROS_WARN("[Mav Wrapper] mav init was denied. is it listening tf?");
+            return false;
+
+        }
+
+
     // planning mode requested 
     }else{
         // if there is a planning 

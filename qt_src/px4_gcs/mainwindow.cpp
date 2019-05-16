@@ -128,6 +128,7 @@ void MainWindow::textEdit_write(QString text){
 
 void MainWindow::keyPressEvent(QKeyEvent* event){
     std::string input_string = event->text().toStdString();
+    textEdit_write((input_string + " is pressed.").c_str());
     px4_code::KeyboardInput keyboard_srv;
     keyboard_srv.request.key = input_string;
     if (not qnode->keyboard_client.call(keyboard_srv))
@@ -147,6 +148,9 @@ void MainWindow::on_pushButton_keyboard_clicked(bool checked)
 
         if (qnode->init_home_client.call(srv_home) and qnode->is_connected){
             textEdit_write("Init current des pose from key input");        
+            px4_code::SwitchMode srv;
+            srv.request.mode = 0;
+            qnode->switch_mode_client.call(srv);            
         }           
         else
         {
@@ -163,9 +167,11 @@ void MainWindow::on_pushButton_keyboard_clicked(bool checked)
 
 void MainWindow::on_pushButton_planner_clicked(bool checked)
 {
+
+            // first, see if ros connected 
+    bool is_connected = qnode->is_connected;
     if(checked){
-        // first, see if ros connected 
-        bool is_connected = qnode->is_connected;
+
 
         // If then,                
         if (is_connected){                    
@@ -175,11 +181,11 @@ void MainWindow::on_pushButton_planner_clicked(bool checked)
             bool is_planner_exist = ros::master::getNodes(node_name);       
             // second, see whether planner node is running      
             if (is_planner_exist){
-    
                 px4_code::SwitchMode srv;
                 srv.request.mode = 1;
                 if(qnode->switch_mode_client.call(srv)){
                     ui->pushButton_planner->setChecked(true);
+                    ui->pushButton_keyboard->setChecked(false);
                 }
                 else{
                     textEdit_write("Mode change denied. Is planning pose being published?");
@@ -197,6 +203,20 @@ void MainWindow::on_pushButton_planner_clicked(bool checked)
             ui->pushButton_planner->setChecked(false);
             textEdit_write("Connect to ros first");
         }
+
+
+    }else{
+        // release the button 
+        px4_code::SwitchMode srv;        
+        srv.request.mode = 0;
+        if (qnode->switch_mode_client.call(srv)) 
+            ui->pushButton_keyboard->setChecked(true);
+        else{
+            textEdit_write("Keyboard mode denied.");
+            ui->pushButton_planner->setChecked(true);
+        }
+
+
     }    
 
 }
