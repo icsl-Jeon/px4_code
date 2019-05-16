@@ -1,14 +1,19 @@
 #include <ros/ros.h>
 #include <string>
+#include <ctype.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
 #include <px4_code/InitHome.h>
+#include <px4_code/KeyboardInput.h>
+#include <px4_code/SwitchMode.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <tf/tf.h>
 #include <tf/transform_listener.h>
-
+#include <tf/transform_datatypes.h>
+#include <tf_conversions/tf_eigen.h>
+#include <Eigen/Core>
 
 /**
  * @brief 
@@ -30,7 +35,7 @@ class MavWrapper{
 
         string mav_frame_id; 
         string world_frame_id;
-        
+
         geometry_msgs::PoseStamped pose_cur; // current pose of MAV 
         geometry_msgs::PoseStamped pose_des_keyboard; 
         geometry_msgs::PoseStamped pose_des_planner; 
@@ -44,7 +49,8 @@ class MavWrapper{
         ros::Subscriber sub_control_pose; // pose which is to be controlled (planner mode)
         ros::Subscriber sub_state; // mav state callback from mavros 
         ros::ServiceServer server_init_home; // initialize homing point 
-
+        ros::ServiceServer server_key_input; // receive keyinput and modify the setpoint
+        ros::ServiceServer server_switch_mode; // 
         unsigned int mode = 0; // 0: keyboard 1: planner setpoint 
         
         double hovering_height;
@@ -54,25 +60,29 @@ class MavWrapper{
         MavWrapper();        
         ~MavWrapper();
         
-        // initialize homing         
+        // initialize start point         
         bool mav_init(); 
         bool init_home_callback(px4_code::InitHomeRequest & req,px4_code::InitHomeResponse& resp);
-        
+        bool keyboard_callback(px4_code::KeyboardInputRequest & req,px4_code::KeyboardInputResponse & resp);
+            
         // routine in the loop  
         void run(); 
         void publish_setpoint();
         void publish_externally_estimated_pose(); 
-        
+        bool swtich_mode_callback(px4_code::SwitchModeRequest & req, px4_code::SwitchModeResponse & resp);
+
         // callback 
         bool update_tf();
         void cb_setpoint(geometry_msgs::PoseStampedConstPtr pose);
-        void cb_state(mavros_msgs::StateConstPtr state);
-                        
+        void cb_state(mavros_msgs::StateConstPtr state);        
+        // move mav from current pose    
+        bool move_mav(double dx,double dy,double dz,double dyaw);                        
         // flags
         bool is_mavros_connected = false;
         bool is_armed = false;
         bool is_offboard = false;
         bool is_tf_recieved = false;
         bool is_init_mav = false;  
+        bool is_planning_received  = false;        
 };
 

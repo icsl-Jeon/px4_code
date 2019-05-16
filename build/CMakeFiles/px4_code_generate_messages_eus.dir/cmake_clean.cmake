@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/px4_code_generate_messages_eus"
   "devel/share/roseus/ros/px4_code/srv/InitHome.l"
+  "devel/share/roseus/ros/px4_code/srv/KeyboardInput.l"
+  "devel/share/roseus/ros/px4_code/srv/SwitchMode.l"
   "devel/share/roseus/ros/px4_code/manifest.l"
 )
 

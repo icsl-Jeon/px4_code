@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/px4_code_generate_messages_lisp"
   "devel/share/common-lisp/ros/px4_code/srv/InitHome.lisp"
+  "devel/share/common-lisp/ros/px4_code/srv/KeyboardInput.lisp"
+  "devel/share/common-lisp/ros/px4_code/srv/SwitchMode.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -20,11 +20,14 @@ QNode::~QNode() {
 void QNode::ros_comms_init(){
     
     ros::NodeHandle nh("~");
-    
+    nh.param<std::string>("planner_node_name",node_name,"/planner");
     // communication start 
     arming_client=  nh.serviceClient<mavros_msgs::CommandBool>("/mavros/cmd/arming");            
     set_mode_client = nh.serviceClient<mavros_msgs::SetMode>("/mavros/set_mode");
     init_home_client = nh.serviceClient<px4_code::InitHome>("/mav_wrapper/init_home");
+    keyboard_client = nh.serviceClient<px4_code::KeyboardInput>("/mav_wrapper/keyboard_in");
+    switch_mode_client = nh.serviceClient<px4_code::SwitchMode>("/mav_wrapper/swtich_mode");
+    
 }
 
 // SLOT 
@@ -53,7 +56,7 @@ void QNode::shutdown() {
 
 //     ros::Rate loop_rate(50);
 //     while(ros::ok()){
-
+        
 
 //     }
     

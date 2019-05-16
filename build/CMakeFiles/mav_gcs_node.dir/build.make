@@ -204,6 +204,9 @@ devel/lib/px4_code/mav_gcs_node: CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/qnod
 devel/lib/px4_code/mav_gcs_node: CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_qnode.cxx.o
 devel/lib/px4_code/mav_gcs_node: CMakeFiles/mav_gcs_node.dir/qt_src/px4_gcs/moc_mainwindow.cxx.o
 devel/lib/px4_code/mav_gcs_node: CMakeFiles/mav_gcs_node.dir/build.make
+devel/lib/px4_code/mav_gcs_node: /opt/ros/kinetic/lib/libtf_conversions.so
+devel/lib/px4_code/mav_gcs_node: /opt/ros/kinetic/lib/libkdl_conversions.so
+devel/lib/px4_code/mav_gcs_node: /opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0
 devel/lib/px4_code/mav_gcs_node: /opt/ros/kinetic/lib/libtf.so
 devel/lib/px4_code/mav_gcs_node: /opt/ros/kinetic/lib/libtf2_ros.so
 devel/lib/px4_code/mav_gcs_node: /opt/ros/kinetic/lib/libactionlib.so

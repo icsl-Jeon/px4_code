@@ -16,6 +16,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "QT_CORE_LIB"
   "QT_GUI_LIB"
+  "QT_NO_DEBUG"
   "QT_NO_KEYWORDS"
   "ROSCONSOLE_BACKEND_LOG4CXX"
   "ROS_PACKAGE_NAME=\"px4_code\""
@@ -31,6 +32,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/usr/include/eigen3"
   )
 
 # Targets to which this target links.

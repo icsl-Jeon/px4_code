@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/jbs/catkin_ws/src/px4_code/build
 include CMakeFiles/px4_code_generate_messages_eus.dir/progress.make
 
 CMakeFiles/px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/srv/InitHome.l
+CMakeFiles/px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/srv/KeyboardInput.l
+CMakeFiles/px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/srv/SwitchMode.l
 CMakeFiles/px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/manifest.l
 
 
@@ -62,12 +64,24 @@ devel/share/roseus/ros/px4_code/srv/InitHome.l: ../srv/InitHome.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from px4_code/InitHome.srv"
 	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/share/roseus/ros/px4_code/srv
 
+devel/share/roseus/ros/px4_code/srv/KeyboardInput.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/px4_code/srv/KeyboardInput.l: ../srv/KeyboardInput.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from px4_code/KeyboardInput.srv"
+	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/share/roseus/ros/px4_code/srv
+
+devel/share/roseus/ros/px4_code/srv/SwitchMode.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/px4_code/srv/SwitchMode.l: ../srv/SwitchMode.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from px4_code/SwitchMode.srv"
+	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/share/roseus/ros/px4_code/srv
+
 devel/share/roseus/ros/px4_code/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for px4_code"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp manifest code for px4_code"
 	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jbs/catkin_ws/src/px4_code/build/devel/share/roseus/ros/px4_code px4_code std_msgs mavros_msgs nav_msgs
 
 px4_code_generate_messages_eus: CMakeFiles/px4_code_generate_messages_eus
 px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/srv/InitHome.l
+px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/srv/KeyboardInput.l
+px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/srv/SwitchMode.l
 px4_code_generate_messages_eus: devel/share/roseus/ros/px4_code/manifest.l
 px4_code_generate_messages_eus: CMakeFiles/px4_code_generate_messages_eus.dir/build.make
 

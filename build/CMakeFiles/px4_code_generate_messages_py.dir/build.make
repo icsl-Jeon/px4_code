@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/jbs/catkin_ws/src/px4_code/build
 include CMakeFiles/px4_code_generate_messages_py.dir/progress.make
 
 CMakeFiles/px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/_InitHome.py
+CMakeFiles/px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/_KeyboardInput.py
+CMakeFiles/px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/_SwitchMode.py
 CMakeFiles/px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/__init__.py
 
 
@@ -62,13 +64,27 @@ devel/lib/python2.7/dist-packages/px4_code/srv/_InitHome.py: ../srv/InitHome.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV px4_code/InitHome"
 	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/lib/python2.7/dist-packages/px4_code/srv
 
+devel/lib/python2.7/dist-packages/px4_code/srv/_KeyboardInput.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
+devel/lib/python2.7/dist-packages/px4_code/srv/_KeyboardInput.py: ../srv/KeyboardInput.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python code from SRV px4_code/KeyboardInput"
+	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/lib/python2.7/dist-packages/px4_code/srv
+
+devel/lib/python2.7/dist-packages/px4_code/srv/_SwitchMode.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
+devel/lib/python2.7/dist-packages/px4_code/srv/_SwitchMode.py: ../srv/SwitchMode.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python code from SRV px4_code/SwitchMode"
+	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/lib/python2.7/dist-packages/px4_code/srv
+
 devel/lib/python2.7/dist-packages/px4_code/srv/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 devel/lib/python2.7/dist-packages/px4_code/srv/__init__.py: devel/lib/python2.7/dist-packages/px4_code/srv/_InitHome.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python srv __init__.py for px4_code"
+devel/lib/python2.7/dist-packages/px4_code/srv/__init__.py: devel/lib/python2.7/dist-packages/px4_code/srv/_KeyboardInput.py
+devel/lib/python2.7/dist-packages/px4_code/srv/__init__.py: devel/lib/python2.7/dist-packages/px4_code/srv/_SwitchMode.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python srv __init__.py for px4_code"
 	catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jbs/catkin_ws/src/px4_code/build/devel/lib/python2.7/dist-packages/px4_code/srv --initpy
 
 px4_code_generate_messages_py: CMakeFiles/px4_code_generate_messages_py
 px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/_InitHome.py
+px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/_KeyboardInput.py
+px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/_SwitchMode.py
 px4_code_generate_messages_py: devel/lib/python2.7/dist-packages/px4_code/srv/__init__.py
 px4_code_generate_messages_py: CMakeFiles/px4_code_generate_messages_py.dir/build.make
 

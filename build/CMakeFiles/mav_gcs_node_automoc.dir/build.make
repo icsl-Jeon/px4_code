@@ -55,7 +55,7 @@ include CMakeFiles/mav_gcs_node_automoc.dir/progress.make
 
 CMakeFiles/mav_gcs_node_automoc:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic uic for target mav_gcs_node"
-	/usr/bin/cmake -E cmake_autogen /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/mav_gcs_node_automoc.dir/ Debug
+	/usr/bin/cmake -E cmake_autogen /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/mav_gcs_node_automoc.dir/ Release
 
 mav_gcs_node_automoc: CMakeFiles/mav_gcs_node_automoc
 mav_gcs_node_automoc: CMakeFiles/mav_gcs_node_automoc.dir/build.make

@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "px4_code: 0 messages, 1 services")
+message(STATUS "px4_code: 0 messages, 3 services")
 
 set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg;-Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg;-Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg;-Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg")
 
@@ -22,6 +22,16 @@ add_custom_target(_px4_code_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "px4_code" "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv" ""
 )
 
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv" NAME_WE)
+add_custom_target(_px4_code_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "px4_code" "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv" ""
+)
+
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv" NAME_WE)
+add_custom_target(_px4_code_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "px4_code" "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv" ""
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -32,6 +42,18 @@ add_custom_target(_px4_code_generate_messages_check_deps_${_filename}
 ### Generating Services
 _generate_srv_cpp(px4_code
   "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/px4_code
+)
+_generate_srv_cpp(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/px4_code
+)
+_generate_srv_cpp(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/px4_code
@@ -51,6 +73,10 @@ add_dependencies(px4_code_generate_messages px4_code_generate_messages_cpp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv" NAME_WE)
 add_dependencies(px4_code_generate_messages_cpp _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_cpp _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_cpp _px4_code_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(px4_code_gencpp)
@@ -65,6 +91,18 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS px4_code_generate_messages_cpp)
 ### Generating Services
 _generate_srv_eus(px4_code
   "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/px4_code
+)
+_generate_srv_eus(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/px4_code
+)
+_generate_srv_eus(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/px4_code
@@ -84,6 +122,10 @@ add_dependencies(px4_code_generate_messages px4_code_generate_messages_eus)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv" NAME_WE)
 add_dependencies(px4_code_generate_messages_eus _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_eus _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_eus _px4_code_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(px4_code_geneus)
@@ -98,6 +140,18 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS px4_code_generate_messages_eus)
 ### Generating Services
 _generate_srv_lisp(px4_code
   "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/px4_code
+)
+_generate_srv_lisp(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/px4_code
+)
+_generate_srv_lisp(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/px4_code
@@ -117,6 +171,10 @@ add_dependencies(px4_code_generate_messages px4_code_generate_messages_lisp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv" NAME_WE)
 add_dependencies(px4_code_generate_messages_lisp _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_lisp _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_lisp _px4_code_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(px4_code_genlisp)
@@ -131,6 +189,18 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS px4_code_generate_messages_lisp)
 ### Generating Services
 _generate_srv_nodejs(px4_code
   "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/px4_code
+)
+_generate_srv_nodejs(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/px4_code
+)
+_generate_srv_nodejs(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/px4_code
@@ -150,6 +220,10 @@ add_dependencies(px4_code_generate_messages px4_code_generate_messages_nodejs)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv" NAME_WE)
 add_dependencies(px4_code_generate_messages_nodejs _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_nodejs _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_nodejs _px4_code_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(px4_code_gennodejs)
@@ -168,6 +242,18 @@ _generate_srv_py(px4_code
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/px4_code
 )
+_generate_srv_py(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/px4_code
+)
+_generate_srv_py(px4_code
+  "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/px4_code
+)
 
 ### Generating Module File
 _generate_module_py(px4_code
@@ -182,6 +268,10 @@ add_dependencies(px4_code_generate_messages px4_code_generate_messages_py)
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_py _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv" NAME_WE)
+add_dependencies(px4_code_generate_messages_py _px4_code_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv" NAME_WE)
 add_dependencies(px4_code_generate_messages_py _px4_code_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

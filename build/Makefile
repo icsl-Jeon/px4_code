@@ -257,6 +257,32 @@ px4_code_generate_messages_cpp/fast:
 .PHONY : px4_code_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named _px4_code_generate_messages_check_deps_SwitchMode
+
+# Build rule for target.
+_px4_code_generate_messages_check_deps_SwitchMode: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _px4_code_generate_messages_check_deps_SwitchMode
+.PHONY : _px4_code_generate_messages_check_deps_SwitchMode
+
+# fast build rule for target.
+_px4_code_generate_messages_check_deps_SwitchMode/fast:
+	$(MAKE) -f CMakeFiles/_px4_code_generate_messages_check_deps_SwitchMode.dir/build.make CMakeFiles/_px4_code_generate_messages_check_deps_SwitchMode.dir/build
+.PHONY : _px4_code_generate_messages_check_deps_SwitchMode/fast
+
+#=============================================================================
+# Target rules for targets named _px4_code_generate_messages_check_deps_KeyboardInput
+
+# Build rule for target.
+_px4_code_generate_messages_check_deps_KeyboardInput: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _px4_code_generate_messages_check_deps_KeyboardInput
+.PHONY : _px4_code_generate_messages_check_deps_KeyboardInput
+
+# fast build rule for target.
+_px4_code_generate_messages_check_deps_KeyboardInput/fast:
+	$(MAKE) -f CMakeFiles/_px4_code_generate_messages_check_deps_KeyboardInput.dir/build.make CMakeFiles/_px4_code_generate_messages_check_deps_KeyboardInput.dir/build
+.PHONY : _px4_code_generate_messages_check_deps_KeyboardInput/fast
+
+#=============================================================================
 # Target rules for targets named _px4_code_generate_messages_check_deps_InitHome
 
 # Build rule for target.
@@ -411,19 +437,6 @@ rosgraph_msgs_generate_messages_py: cmake_check_build_system
 rosgraph_msgs_generate_messages_py/fast:
 	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named mav_offboard_test_node
-
-# Build rule for target.
-mav_offboard_test_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mav_offboard_test_node
-.PHONY : mav_offboard_test_node
-
-# fast build rule for target.
-mav_offboard_test_node/fast:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/build
-.PHONY : mav_offboard_test_node/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_nodejs
@@ -1180,6 +1193,19 @@ sensor_msgs_generate_messages_py/fast:
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named mav_wrapper_node
+
+# Build rule for target.
+mav_wrapper_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mav_wrapper_node
+.PHONY : mav_wrapper_node
+
+# fast build rule for target.
+mav_wrapper_node/fast:
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/build
+.PHONY : mav_wrapper_node/fast
+
+#=============================================================================
 # Target rules for targets named geographic_msgs_generate_messages_eus
 
 # Build rule for target.
@@ -1284,17 +1310,17 @@ mav_gcs_node_automoc/fast:
 .PHONY : mav_gcs_node_automoc/fast
 
 #=============================================================================
-# Target rules for targets named mav_offboard_test_node_automoc
+# Target rules for targets named mav_wrapper_node_automoc
 
 # Build rule for target.
-mav_offboard_test_node_automoc: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mav_offboard_test_node_automoc
-.PHONY : mav_offboard_test_node_automoc
+mav_wrapper_node_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mav_wrapper_node_automoc
+.PHONY : mav_wrapper_node_automoc
 
 # fast build rule for target.
-mav_offboard_test_node_automoc/fast:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node_automoc.dir/build.make CMakeFiles/mav_offboard_test_node_automoc.dir/build
-.PHONY : mav_offboard_test_node_automoc/fast
+mav_wrapper_node_automoc/fast:
+	$(MAKE) -f CMakeFiles/mav_wrapper_node_automoc.dir/build.make CMakeFiles/mav_wrapper_node_automoc.dir/build
+.PHONY : mav_wrapper_node_automoc/fast
 
 #=============================================================================
 # Target rules for targets named gmock
@@ -1489,7 +1515,7 @@ src/MavWrapper.o: src/MavWrapper.cpp.o
 
 # target to build an object file
 src/MavWrapper.cpp.o:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/MavWrapper.cpp.o
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.o
 .PHONY : src/MavWrapper.cpp.o
 
 src/MavWrapper.i: src/MavWrapper.cpp.i
@@ -1498,7 +1524,7 @@ src/MavWrapper.i: src/MavWrapper.cpp.i
 
 # target to preprocess a source file
 src/MavWrapper.cpp.i:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/MavWrapper.cpp.i
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.i
 .PHONY : src/MavWrapper.cpp.i
 
 src/MavWrapper.s: src/MavWrapper.cpp.s
@@ -1507,35 +1533,35 @@ src/MavWrapper.s: src/MavWrapper.cpp.s
 
 # target to generate assembly for a file
 src/MavWrapper.cpp.s:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/MavWrapper.cpp.s
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.s
 .PHONY : src/MavWrapper.cpp.s
 
-src/test_offboard_node.o: src/test_offboard_node.cpp.o
+src/mav_wrapper_main.o: src/mav_wrapper_main.cpp.o
 
-.PHONY : src/test_offboard_node.o
+.PHONY : src/mav_wrapper_main.o
 
 # target to build an object file
-src/test_offboard_node.cpp.o:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/test_offboard_node.cpp.o
-.PHONY : src/test_offboard_node.cpp.o
+src/mav_wrapper_main.cpp.o:
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o
+.PHONY : src/mav_wrapper_main.cpp.o
 
-src/test_offboard_node.i: src/test_offboard_node.cpp.i
+src/mav_wrapper_main.i: src/mav_wrapper_main.cpp.i
 
-.PHONY : src/test_offboard_node.i
+.PHONY : src/mav_wrapper_main.i
 
 # target to preprocess a source file
-src/test_offboard_node.cpp.i:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/test_offboard_node.cpp.i
-.PHONY : src/test_offboard_node.cpp.i
+src/mav_wrapper_main.cpp.i:
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.i
+.PHONY : src/mav_wrapper_main.cpp.i
 
-src/test_offboard_node.s: src/test_offboard_node.cpp.s
+src/mav_wrapper_main.s: src/mav_wrapper_main.cpp.s
 
-.PHONY : src/test_offboard_node.s
+.PHONY : src/mav_wrapper_main.s
 
 # target to generate assembly for a file
-src/test_offboard_node.cpp.s:
-	$(MAKE) -f CMakeFiles/mav_offboard_test_node.dir/build.make CMakeFiles/mav_offboard_test_node.dir/src/test_offboard_node.cpp.s
-.PHONY : src/test_offboard_node.cpp.s
+src/mav_wrapper_main.cpp.s:
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.s
+.PHONY : src/mav_wrapper_main.cpp.s
 
 # Help Target
 help:
@@ -1552,6 +1578,8 @@ help:
 	@echo "... px4_code_generate_messages_eus"
 	@echo "... px4_code_gencpp"
 	@echo "... px4_code_generate_messages_cpp"
+	@echo "... _px4_code_generate_messages_check_deps_SwitchMode"
+	@echo "... _px4_code_generate_messages_check_deps_KeyboardInput"
 	@echo "... _px4_code_generate_messages_check_deps_InitHome"
 	@echo "... px4_code_generate_messages"
 	@echo "... tf2_msgs_generate_messages_nodejs"
@@ -1565,7 +1593,6 @@ help:
 	@echo "... px4_code_genpy"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... mav_offboard_test_node"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
@@ -1628,6 +1655,7 @@ help:
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... mav_wrapper_node"
 	@echo "... geographic_msgs_generate_messages_eus"
 	@echo "... nav_msgs_generate_messages_cpp"
 	@echo "... geographic_msgs_generate_messages_nodejs"
@@ -1636,7 +1664,7 @@ help:
 	@echo "... uuid_msgs_generate_messages_eus"
 	@echo "... uuid_msgs_generate_messages_py"
 	@echo "... mav_gcs_node_automoc"
-	@echo "... mav_offboard_test_node_automoc"
+	@echo "... mav_wrapper_node_automoc"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
@@ -1659,9 +1687,9 @@ help:
 	@echo "... src/MavWrapper.o"
 	@echo "... src/MavWrapper.i"
 	@echo "... src/MavWrapper.s"
-	@echo "... src/test_offboard_node.o"
-	@echo "... src/test_offboard_node.i"
-	@echo "... src/test_offboard_node.s"
+	@echo "... src/mav_wrapper_main.o"
+	@echo "... src/mav_wrapper_main.i"
+	@echo "... src/mav_wrapper_main.s"
 .PHONY : help
 
 

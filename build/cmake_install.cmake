@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -115,7 +115,11 @@ file(INSTALL DESTINATION "/usr/local" TYPE FILE FILES "/home/jbs/catkin_ws/src/p
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/px4_code/srv" TYPE FILE FILES "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/px4_code/srv" TYPE FILE FILES
+    "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv"
+    "/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv"
+    "/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

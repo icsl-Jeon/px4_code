@@ -17,6 +17,9 @@ MavWrapper::MavWrapper():nh("~"){
     pub_setpoint = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 10);
     pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose",10);
     server_init_home = nh.advertiseService("/mav_wrapper/init_home",&MavWrapper::init_home_callback,this);        
+    server_key_input = nh.advertiseService("/mav_wrapper/keyboard_in",&MavWrapper::keyboard_callback,this);
+    server_switch_mode = nh.advertiseService("/mav_wrapper/swtich_mode",&MavWrapper::swtich_mode_callback,this);    
+
 }
 
 MavWrapper::~MavWrapper(){
@@ -76,11 +79,11 @@ bool MavWrapper::mav_init(){
     if (is_tf_recieved){
         pose_des_keyboard = pose_cur;        
         is_init_mav = true;
-        ROS_INFO("Initializing the homing point with the current pose");
+        ROS_INFO("[Mav Wrapper] Initializing the homing point with the current pose");
         return true;
     }
     else 
-        {ROS_WARN("tf information has not been recieved yet."); return false;};
+        {ROS_WARN("[Mav Wrapper] tf information has not been recieved yet."); return false;};
 }
 
 void MavWrapper::publish_setpoint(){    
@@ -94,12 +97,83 @@ void MavWrapper::publish_setpoint(){
 void MavWrapper::publish_externally_estimated_pose(){      
     pub_cur_pose.publish(pose_cur);
 }
-
+/**
+ * @brief modify current desired pose for keyboard input with current UAV position
+ * 
+ * @param req 
+ * @param resp 
+ * @return true 
+ * @return false 
+ */
 bool MavWrapper::init_home_callback(px4_code::InitHomeRequest & req,px4_code::InitHomeResponse& resp){
     resp.is_success = mav_init();
     return true;
 };
+/**
+ * @brief : move MAV w.r.t current desired frame 
+ * 
+ * @param req 
+ * @param resp 
+ * @return true 
+ * @return false 
+ */
+bool MavWrapper::keyboard_callback(px4_code::KeyboardInputRequest & req,px4_code::KeyboardInputResponse & resp){
+    std::string keyinput = req.key;
+    bool is_success = false;     
+    double increment_xyz = 0.05;
+    double increment_yaw = 3.141592 / 8; // maybe to be tuned  
+    Eigen::Vector4d move_pose; move_pose.setZero();
+    
+    // prepare delta pose  
+    switch (tolower(keyinput.c_str()[0])){
+        case 'w': 
+            move_pose(0) = increment_xyz;
+            break;            
+        case 's': 
+            move_pose(0) = -increment_xyz;
+            break;
+        case 'a':
+            move_pose(1) = increment_xyz;
+            break;
+        case 'd':
+            move_pose(1) = -increment_xyz;
+            break;
+        case 'z':
+            move_pose(2) = -increment_xyz;
+            break;
+        case 'c':
+            move_pose(2) = increment_xyz;
+            break;        
+        case 'q':
+            move_pose(3) = increment_yaw;
+            break;
+        case 'e':
+            move_pose(3) = -increment_yaw;
+            break;                            
+   } 
 
+    // apply delta pose 
+    // std::cout<<move_pose<<std::endl;
+    return move_mav(move_pose(0),move_pose(1),move_pose(2),move_pose(3));    
+}
+            
+bool MavWrapper::swtich_mode_callback(px4_code::SwitchModeRequest & req, px4_code::SwitchModeResponse & resp){
+    // keyboard mode requested 
+    if (req.mode == 0){
+        mode = 0;
+        return true;
+    // planning mode requested 
+    }else{
+        // if there is a planning 
+        if (is_planning_received){
+            mode =1 ;
+            return true;}
+        else{            
+            return false;
+        
+        }
+    }
+}
 void MavWrapper::run(){
     
     // Phase 1 
@@ -129,6 +203,66 @@ void MavWrapper::run(){
     
 }
 
+
+// move the desired control pose of mav w.r.t body frame 
+bool MavWrapper::move_mav(double dx,double dy,double dz,double dyaw){
+    // if keyboard mode
+    if (mode == 0 and is_init_mav){
+        
+        // translation w.r.t body frame
+        Eigen::Vector3d dpose(dx,dy,dz);
+
+        // reference frame = current ? current_des ?  which would be better ?  
+        tf::Quaternion q_cur_des;
+        q_cur_des.setX(pose_des_keyboard.pose.orientation.x);
+        q_cur_des.setY(pose_des_keyboard.pose.orientation.y);
+        q_cur_des.setZ(pose_des_keyboard.pose.orientation.z);
+        q_cur_des.setW(pose_des_keyboard.pose.orientation.w);
+
+        tf::Vector3 t_cur_des(pose_des_keyboard.pose.position.x,
+                        pose_des_keyboard.pose.position.y,
+                        pose_des_keyboard.pose.position.z);
+
+
+        tf::Transform transform_cur;
+        transform_cur.setRotation(q_cur_des);
+        // transform_cur.setOrigin(t_cur_des);
+
+        // transform matrix 
+        Eigen::Isometry3d Twb;
+        tf::transformTFToEigen(transform_cur,Twb);
+
+        Eigen::Vector3d dpose_w = Twb*dpose;
+        
+        // Step 1: modify xyz 
+        pose_des_keyboard.pose.position.x += dpose_w(0);
+        pose_des_keyboard.pose.position.y += dpose_w(1);
+        pose_des_keyboard.pose.position.z += dpose_w(2);
+        
+        // Step 2: modify yaw direcion
+        double roll,pitch,yaw;
+        tf::Matrix3x3(q_cur_des).getEulerYPR(yaw,pitch,roll);
+        yaw += dyaw; // here, we adjust yaw
+        tf::Quaternion q_des = tf::Quaternion();
+        q_des.setRPY(roll,pitch,yaw);
+
+        pose_des_keyboard.pose.orientation.x = q_des.getX();
+        pose_des_keyboard.pose.orientation.y = q_des.getY();
+        pose_des_keyboard.pose.orientation.z = q_des.getZ();
+        pose_des_keyboard.pose.orientation.w = q_des.getW();
+
+        return true;
+    }
+    else
+    {
+        if (not mode == 0)
+            ROS_WARN("mav receives planning setpoint. To enable keyboard, switch mode");
+        else 
+            ROS_WARN("No initialized homing point");
+        return false;
+    }
+    
+}
 
 
 

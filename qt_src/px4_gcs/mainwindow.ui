@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>502</width>
+    <width>564</width>
     <height>347</height>
    </rect>
   </property>
@@ -22,15 +22,15 @@ selection-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.4689
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>0</y>
-      <width>451</width>
+      <width>531</width>
       <height>271</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout" stretch="2,3,2">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0,0">
        <item>
         <widget class="QPushButton" name="pushButton_ros">
          <property name="sizePolicy">
@@ -104,12 +104,37 @@ selection-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.4689
 </string>
          </property>
          <property name="text">
-          <string>Set offboard</string>
+          <string>Set offboard
+ and flight</string>
          </property>
          <property name="checkable">
           <bool>false</bool>
          </property>
         </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="pushButton_keyboard">
+           <property name="text">
+            <string>keyboard</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_planner">
+           <property name="text">
+            <string>planner</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
@@ -120,6 +145,13 @@ selection-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.4689
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Maintainer: Felipe / junbs95@gmail.com / github.com/icsl-Jeon&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -156,7 +188,7 @@ selection-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.4689
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>502</width>
+     <width>564</width>
      <height>25</height>
     </rect>
    </property>

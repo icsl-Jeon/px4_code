@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/jbs/catkin_ws/src/px4_code/build
 include CMakeFiles/px4_code_generate_messages_cpp.dir/progress.make
 
 CMakeFiles/px4_code_generate_messages_cpp: devel/include/px4_code/InitHome.h
+CMakeFiles/px4_code_generate_messages_cpp: devel/include/px4_code/KeyboardInput.h
+CMakeFiles/px4_code_generate_messages_cpp: devel/include/px4_code/SwitchMode.h
 
 
 devel/include/px4_code/InitHome.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
@@ -63,8 +65,24 @@ devel/include/px4_code/InitHome.h: /opt/ros/kinetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from px4_code/InitHome.srv"
 	cd /home/jbs/catkin_ws/src/px4_code && /home/jbs/catkin_ws/src/px4_code/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/include/px4_code -e /opt/ros/kinetic/share/gencpp/cmake/..
 
+devel/include/px4_code/KeyboardInput.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/px4_code/KeyboardInput.h: ../srv/KeyboardInput.srv
+devel/include/px4_code/KeyboardInput.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+devel/include/px4_code/KeyboardInput.h: /opt/ros/kinetic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from px4_code/KeyboardInput.srv"
+	cd /home/jbs/catkin_ws/src/px4_code && /home/jbs/catkin_ws/src/px4_code/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/include/px4_code -e /opt/ros/kinetic/share/gencpp/cmake/..
+
+devel/include/px4_code/SwitchMode.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/px4_code/SwitchMode.h: ../srv/SwitchMode.srv
+devel/include/px4_code/SwitchMode.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+devel/include/px4_code/SwitchMode.h: /opt/ros/kinetic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from px4_code/SwitchMode.srv"
+	cd /home/jbs/catkin_ws/src/px4_code && /home/jbs/catkin_ws/src/px4_code/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Imavros_msgs:/opt/ros/kinetic/share/mavros_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeographic_msgs:/opt/ros/kinetic/share/geographic_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -Iuuid_msgs:/opt/ros/kinetic/share/uuid_msgs/cmake/../msg -p px4_code -o /home/jbs/catkin_ws/src/px4_code/build/devel/include/px4_code -e /opt/ros/kinetic/share/gencpp/cmake/..
+
 px4_code_generate_messages_cpp: CMakeFiles/px4_code_generate_messages_cpp
 px4_code_generate_messages_cpp: devel/include/px4_code/InitHome.h
+px4_code_generate_messages_cpp: devel/include/px4_code/KeyboardInput.h
+px4_code_generate_messages_cpp: devel/include/px4_code/SwitchMode.h
 px4_code_generate_messages_cpp: CMakeFiles/px4_code_generate_messages_cpp.dir/build.make
 
 .PHONY : px4_code_generate_messages_cpp

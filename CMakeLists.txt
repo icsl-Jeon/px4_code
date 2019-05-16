@@ -10,8 +10,11 @@ mavros_msgs
 roscpp
 geometry_msgs
 tf
+tf_conversions
 qt_build
 )
+
+find_package(Eigen3 REQUIRED NO_MODULE)
 
 ##############################################################################
 # Qt Environment
@@ -32,7 +35,10 @@ message("qt form path: ${CMAKE_CURRENT_BINARY_DIR}")
 
 add_service_files(
   FILES
-  InitHome.srv)
+  InitHome.srv
+  KeyboardInput.srv
+  SwitchMode.srv
+  )
 
 
 ## Generate added messages and services with any dependencies listed here

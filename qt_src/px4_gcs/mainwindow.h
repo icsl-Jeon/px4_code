@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QProcess>
+#include "ui_mainwindow.h"
 #include "qnode.h"
 namespace Ui {
 class MainWindow;
@@ -14,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QNode* qnode,QWidget *parent = 0);
     ~MainWindow();
+    std::string planner_node_name;
 
 Q_SIGNALS:
     void ros_comm_start(bool* result);  
@@ -31,9 +34,19 @@ private Q_SLOTS:
 
     void textEdit_write(QString);
 
+    void on_pushButton_keyboard_clicked(bool checked);
+
+    void on_pushButton_planner_clicked(bool checked);
+
+protected:
+    void keyPressEvent(QKeyEvent* event);
+
 private:
     Ui::MainWindow *ui;
     QNode* qnode;
+    QProcess* qprocess;    
+
 };
+
 
 #endif // MAINWINDOW_H

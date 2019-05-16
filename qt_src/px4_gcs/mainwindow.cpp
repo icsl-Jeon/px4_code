@@ -1,7 +1,7 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include <QPixmap>
 #include <QSettings>
+#include <QKeyEvent>
 
 #include "qnode.h"
 
@@ -23,8 +23,16 @@ MainWindow::MainWindow(QNode* qnode,QWidget *parent) :
     // color 
     ui->pushButton_arm->setStyleSheet("QPushButton:checked{background-color: rgba(200, 20, 80,20);\
                                           }");    
+    
+    // editing text board is not permitted 
+    ui->textEdit->setReadOnly(true);
+
+    ui->pushButton_keyboard->setChecked(true);
+    ui->pushButton_planner->setChecked(false);
 
 }
+
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -37,6 +45,7 @@ void MainWindow::on_pushButton_ros_clicked(bool checked){
         if (is_connected){
             ui->textEdit->append("connection estabilished");    
             qnode->is_connected = true; 
+
         }else{
             ui->textEdit->append("connection failed");
             ui->pushButton_ros->setChecked(false);            
@@ -108,11 +117,86 @@ void MainWindow::on_pushButton_offboard_clicked(){
                 textEdit_write("requested offboard but failed.");                                          
     }else{
         textEdit_write("please invoke setmode after 1)turning mav_wrapper 2) ros connect");  
-        ui->pushButton_arm->setChecked(false);      
+        ui->pushButton_arm->setChecked(false);              
     }
 }
 
 
 void MainWindow::textEdit_write(QString text){
     ui->textEdit->append(text);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent* event){
+    std::string input_string = event->text().toStdString();
+    px4_code::KeyboardInput keyboard_srv;
+    keyboard_srv.request.key = input_string;
+    if (not qnode->keyboard_client.call(keyboard_srv))
+        textEdit_write("[GCS] key input not received.");                
+}
+
+
+
+
+
+void MainWindow::on_pushButton_keyboard_clicked(bool checked)
+{
+    if(checked){
+        px4_code::InitHome srv_home;        
+        px4_code::SwitchMode srv_mode;
+        srv_mode.request.mode = 0;
+
+        if (qnode->init_home_client.call(srv_home) and qnode->is_connected){
+            textEdit_write("Init current des pose from key input");        
+        }           
+        else
+        {
+            textEdit_write("Init current des pose or mode change failed. Is mav_wrapper running?");         
+            ui->pushButton_keyboard->setChecked(false); // release
+        }                                        
+    }    
+    // already checked, but again checked
+    else{
+        textEdit_write("Aleady checked");           
+        ui->pushButton_keyboard->setChecked(true);
+    }    
+}
+
+void MainWindow::on_pushButton_planner_clicked(bool checked)
+{
+    if(checked){
+        // first, see if ros connected 
+        bool is_connected = qnode->is_connected;
+
+        // If then,                
+        if (is_connected){                    
+            ros::V_string node_name;
+            // is this node running? If then, we request. 
+            node_name.push_back(qnode->planner_node_name());   
+            bool is_planner_exist = ros::master::getNodes(node_name);       
+            // second, see whether planner node is running      
+            if (is_planner_exist){
+    
+                px4_code::SwitchMode srv;
+                srv.request.mode = 1;
+                if(qnode->switch_mode_client.call(srv)){
+                    ui->pushButton_planner->setChecked(true);
+                }
+                else{
+                    textEdit_write("Mode change denied. Is planning pose being published?");
+                    ui->pushButton_planner->setChecked(false);
+                }
+            }        
+            else{
+                // request failed 
+                ui->pushButton_planner->setChecked(false);
+                textEdit_write("Planner node not found");           
+            }
+        }
+        else{
+            // request failed
+            ui->pushButton_planner->setChecked(false);
+            textEdit_write("Connect to ros first");
+        }
+    }    
+
 }

@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv"
+services_str = "/home/jbs/catkin_ws/src/px4_code/srv/InitHome.srv;/home/jbs/catkin_ws/src/px4_code/srv/KeyboardInput.srv;/home/jbs/catkin_ws/src/px4_code/srv/SwitchMode.srv"
 pkg_name = "px4_code"
 dependencies_str = "std_msgs;mavros_msgs;nav_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

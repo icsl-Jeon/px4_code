@@ -57,28 +57,28 @@ include CMakeFiles/mav_wrapper_node.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mav_wrapper_node.dir/flags.make
 
-CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o: CMakeFiles/mav_wrapper_node.dir/flags.make
-CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o: ../src/test_offboard_node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o"
-	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o -c /home/jbs/catkin_ws/src/px4_code/src/test_offboard_node.cpp
+CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o: CMakeFiles/mav_wrapper_node.dir/flags.make
+CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o: ../src/mav_wrapper_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o"
+	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o -c /home/jbs/catkin_ws/src/px4_code/src/mav_wrapper_main.cpp
 
-CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.i"
-	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jbs/catkin_ws/src/px4_code/src/test_offboard_node.cpp > CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.i
+CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.i"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jbs/catkin_ws/src/px4_code/src/mav_wrapper_main.cpp > CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.i
 
-CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.s"
-	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jbs/catkin_ws/src/px4_code/src/test_offboard_node.cpp -o CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.s
+CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.s"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jbs/catkin_ws/src/px4_code/src/mav_wrapper_main.cpp -o CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.s
 
-CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.requires:
+CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.requires:
 
-.PHONY : CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.requires
+.PHONY : CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.requires
 
-CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.provides: CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.requires
-	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.provides.build
-.PHONY : CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.provides
+CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.provides: CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.provides.build
+.PHONY : CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.provides
 
-CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.provides.build: CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o
+CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.provides.build: CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o
 
 
 CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.o: CMakeFiles/mav_wrapper_node.dir/flags.make
@@ -107,15 +107,18 @@ CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.o.provides.build: CMakeFiles/
 
 # Object files for target mav_wrapper_node
 mav_wrapper_node_OBJECTS = \
-"CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o" \
+"CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o" \
 "CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.o"
 
 # External object files for target mav_wrapper_node
 mav_wrapper_node_EXTERNAL_OBJECTS =
 
-devel/lib/px4_code/mav_wrapper_node: CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o
+devel/lib/px4_code/mav_wrapper_node: CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o
 devel/lib/px4_code/mav_wrapper_node: CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.o
 devel/lib/px4_code/mav_wrapper_node: CMakeFiles/mav_wrapper_node.dir/build.make
+devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libtf_conversions.so
+devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libkdl_conversions.so
+devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libtf.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libtf2_ros.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libactionlib.so
@@ -149,7 +152,7 @@ CMakeFiles/mav_wrapper_node.dir/build: devel/lib/px4_code/mav_wrapper_node
 
 .PHONY : CMakeFiles/mav_wrapper_node.dir/build
 
-CMakeFiles/mav_wrapper_node.dir/requires: CMakeFiles/mav_wrapper_node.dir/src/test_offboard_node.cpp.o.requires
+CMakeFiles/mav_wrapper_node.dir/requires: CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o.requires
 CMakeFiles/mav_wrapper_node.dir/requires: CMakeFiles/mav_wrapper_node.dir/src/MavWrapper.cpp.o.requires
 
 .PHONY : CMakeFiles/mav_wrapper_node.dir/requires
