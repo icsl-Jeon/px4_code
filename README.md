@@ -1,6 +1,34 @@
-# px4_code for my project
+# px4_code 
+
+___
+
+
+
+<img src="https://github.com/icsl-Jeon/traj_gen/blob/master/img/manual.gif">
+
+Visit here for instruction: 
+
+https://www.youtube.com/watch?v=9QvqmMlA_oY
+
+## Introduction 
+
+<img src="https://github.com/icsl-Jeon/traj_gen/blob/master/img/mav_wrapper_diagram.png">
+
+This package is a module for px4 position control from user input or trajectory planner. Currently, SITL (refer mavros and px4 for details) was validated with gazebo.  The package implemented two nodes: 1) gcs with gui(mav_gcs_node) and 2) wrapping module(mav_wrapping_node).  
+
+
+
+<img src="https://github.com/icsl-Jeon/traj_gen/blob/master/img/main_ui.png">
 
 ## Installation 
+
+### 0. Dependencies
+
+#### (1) gazebo2rviz
+
+In this package, we will extract tf information coming from gazebo. In order for it,  the following package will publish tf information of all objects in gazebo simulator. Basically, this is fake gps. 
+
+<http://wiki.ros.org/gazebo2rviz>
 
 ### 1. Firmware Settings
 

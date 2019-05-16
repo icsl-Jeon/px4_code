@@ -30,6 +30,27 @@ MainWindow::MainWindow(QNode* qnode,QWidget *parent) :
     ui->pushButton_keyboard->setChecked(true);
     ui->pushButton_planner->setChecked(false);
 
+
+
+
+    // logos
+    std::string cd = __FILE__;
+    std::cout<<cd<<std::endl;
+    cd.erase(cd.end()-14,cd.end());   
+
+    QPixmap pix_larr((cd+"/resource/LARR.jpg").c_str());
+    int w = ui->label__larr->width();
+    int h = ui->label__larr->height();
+    ui->label__larr->setPixmap(pix_larr.scaled(w,h,Qt::KeepAspectRatio));
+    // ui->label__larr->setScaledContents(true);
+    QPixmap pix_larr2((cd + "/resource/main.jpg").c_str());
+    int w2 = ui->label_naruto->width();
+    int h2 = ui->label_naruto->height();
+        // ui->label_naruto->setScaledContents(true);
+    ui->label_naruto->setPixmap(pix_larr2.scaled(w2,h2,Qt::KeepAspectRatio));
+
+
+
 }
 
 
@@ -128,7 +149,7 @@ void MainWindow::textEdit_write(QString text){
 
 void MainWindow::keyPressEvent(QKeyEvent* event){
     std::string input_string = event->text().toStdString();
-    textEdit_write((input_string + " is pressed.").c_str());
+    // textEdit_write((input_string + " is pressed.").c_str());
     px4_code::KeyboardInput keyboard_srv;
     keyboard_srv.request.key = input_string;
     if (not qnode->keyboard_client.call(keyboard_srv))

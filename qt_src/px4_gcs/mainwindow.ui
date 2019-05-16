@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>564</width>
-    <height>347</height>
+    <height>373</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,11 +24,11 @@ selection-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.4689
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>531</width>
+      <width>540</width>
       <height>271</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="2,3,2">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="2,3">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0,0">
        <item>
@@ -155,32 +155,33 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_naruto">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label__larr">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_naruto">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>91</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label__larr">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>280</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
