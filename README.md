@@ -14,7 +14,7 @@ https://www.youtube.com/watch?v=9QvqmMlA_oY
 
 <img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/mav_wrapper_diagram.png">
 
-This package is a module for px4 position control from user input or trajectory planner. Currently, SITL (refer mavros and px4 for details) was validated with gazebo.  The package implemented two nodes: 1) gcs with gui(mav_gcs_node) and 2) wrapping module(mav_wrapping_node).  
+ This package is a module for px4 position control from user input or trajectory planner. Currently, SITL (refer mavros and px4 for details) was validated with gazebo.  The package implemented two nodes: 1) gcs with gui(mav_gcs_node) and 2) wrapping module(mav_wrapping_node).  To run those simulator, you have to properly configure your QGroundControl parameter so that px4 can listen external pose topic(refer). 
 
 
 
@@ -24,13 +24,29 @@ This package is a module for px4 position control from user input or trajectory 
 
 ### 0. Dependencies
 
-#### (1) gazebo2rviz
+#### (1) px4 firmware 
+
+This package is not a ROS package! In our case, this package is required for SITL(simulation) gazebo. This package will help us spawn drone on gazebo and mimic the behavior of actual drone. 
+
+```
+git clone https://github.com/PX4/Firmware
+```
+
+*No build is mandatory at present step. Follow [make instruction](##mavros)*
+
+#### (2) mavros
+
+This package is for mavlink-ROS communication with px4 on SITL. As a ROS user, we can access px4 via this ROS node.  Install it from source.  
+
+#### (3) gazebo2rviz
 
 In this package, we will extract tf information coming from gazebo. In order for it,  the following package will publish tf information of all objects in gazebo simulator. Basically, this is fake gps. 
 
 <http://wiki.ros.org/gazebo2rviz>
 
-### 1. Firmware Settings
+# 
+
+### 1. Run the simulation environment (SITL) 
 
 #### (1) git clone 
 
