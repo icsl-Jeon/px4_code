@@ -6,7 +6,7 @@
         <arg name="world_name" value="$(find px4)/Tools/sitl_gazebo/worlds/iris.world"/> 
     </include> -->
 
-<node pkg="tf" type="static_transform_publisher" name="tf_mapper_mav" args="1.5 1.5 0.6  0  0  0 map /fake_frame 100" />
+<node pkg="tf" type="static_transform_publisher" name="tf_mapper_mav" args="0 0 0  0  0  0 map world 100" />
 
     <!--mav gcs-->
     <node name="mav_gcs_node" pkg="px4_code" type="mav_gcs_node">
@@ -15,7 +15,7 @@
 
     <!--mav wrapper-->
     <node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">   
-        <param name="mav_frame_id" value="/fake_frame"/>         
+        <param name="mav_frame_id" value="/iris__base_link"/>         
         <param name="world_frame_id" value="/map"/>         
     </node>
 </launch>

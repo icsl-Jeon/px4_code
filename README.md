@@ -6,33 +6,80 @@ ___
 
 <img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/manual.gif">
 
-Visit here for instruction: 
+<img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/HITL_flight.gif">
+
+Visit here for instruction video for SITL: 
 
 https://www.youtube.com/watch?v=9QvqmMlA_oY
+
+
 
 ## Introduction 
 
 <img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/mav_wrapper_diagram.png">
 
- This package is a module for px4 position control from user input or trajectory planner. Currently, SITL (refer mavros and px4 for details) was validated with gazebo.  The package implemented two nodes: 1) gcs with gui(mav_gcs_node) and 2) wrapping module(mav_wrapping_node).  To run those simulator, you have to properly configure your QGroundControl parameter so that px4 can listen external pose topic(refer). 
+ This package is a module for px4 position control from user input or trajectory planner. Currently, SITL (refer mavros and px4 for details) with Gazebo and HITL (real hard ware) were validated.  The package implemented two nodes: 1) gcs with gui(mav_gcs_node) and 2) wrapping module(mav_wrapping_node). 
 
+*mav_gcs_node* features various service clients for initialization or re-initalization of setpoint for the case of keyboard control (**initialize homing** button in gui), arming and disarming in offboard control (**Arming button**) and offboard mode change for px4(**Setoffboard and flight**). Also, it alternates setpoint publish mode between keyboard and planner by **keyboard** & **planner** button . 
 
+*mav_wrapper_node* overrides the local position of px4 with external pose (/mavros/vision_pose/pose). The external pose will be fused with IMU of px4 to yield /mavros/local_position/pose which will be used for position control in offboard mode.  Also, it provides clients for the mentioned service in mav_gcs_node in onboard computer side. 
+
+The *px4_code* equipped with *mav_gcs_node* and *mav_wrapper_node* will help you in the following cases: 1) real world MAV position control in either motion capture system or VIO (ZED stereo camera VIO was tested in my hardware environment) 2) gazeob SITL simulation from px4.
+
+​        
+
+### (1) mav_gcs_node
+
+#### gui of mav_gcs_node to be run in ground station(labtop) 
 
 <img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/main_ui.png">
 
+I didn't instate the setpoint publisher in ground station. Instead, I put it in onboard side. Thus, to change the setpoint from keyboard input from gcs, I put multiple service clients in GCS with the above gui. 
+
+### (2) mav_wrapper_node
+
+Node [/mav_wrapper_node]
+Publications: 
+
+ * /mavros/setpoint_position/local [geometry_msgs/PoseStamped]
+ * /mavros/vision_pose/pose [geometry_msgs/PoseStamped]
+
+Subscriptions: 
+ * /mav_wrapper/setpoint_planning [geometry_msgs/PoseStamped]
+ * /mavros/state [mavros_msgs/State]
+ * /tf [tf2_msgs/TFMessage]
+ * /tf_static [unknown type]
+
+Services: 
+ * /mav_wrapper/init_home : initialize keyboard setpoint with current /mavros/local_position/pose 
+
+ * /mav_wrapper/keyboard_in : change the setpoint from keyboard mode. 
+
+   w: forward / s: backword / a:move left / d: move right (those who enjoys shooting game, you will..) 
+
+   z: descent / c: ascent / q: spin left / e: spin right   
+
+ * /mav_wrapper/swtich_mode: determine setpoint publishing in either from keyboard or planner which publishes /mav_wrapper/setpoint_planning [geometry_msgs/PoseStamped]. 0: keyboard 1:planner  for request. 
+
+   
+
 ## Installation 
 
-### 0. Dependencies
+___
+
+
+
+### 1. Dependencies
 
 #### (1) px4 firmware 
 
 This package is not a ROS package! In our case, this package is required for SITL(simulation) gazebo. This package will help us spawn drone on gazebo and mimic the behavior of actual drone. 
 
 ```
-git clone https://github.com/PX4/Firmware
+git clone https://github.com/PX4/Firmware.git
 ```
 
-*No build is mandatory at present step. Follow [make instruction](##mavros)*
+*No build is mandatory at present step in STIL. Follow [make instruction](##mavros)*
 
 #### (2) mavros
 
@@ -40,13 +87,35 @@ This package is for mavlink-ROS communication with px4 on SITL. As a ROS user, w
 
 #### (3) gazebo2rviz
 
-In this package, we will extract tf information coming from gazebo. In order for it,  the following package will publish tf information of all objects in gazebo simulator. Basically, this is fake gps. 
+In this package, we will extract tf information coming from gazebo in SITL. In order for it,  the following package will publish tf information of all objects in gazebo simulator. Basically, this is fake gps. 
 
 <http://wiki.ros.org/gazebo2rviz>
 
-# 
+### (4) traj_gen
 
-### 1. Run the simulation environment (SITL) 
+You might want to try this package for path generation where you can directly infuse control pose. 
+
+Clone here :  <https://github.com/icsl-Jeon/traj_gen>
+
+## Getting started
+
+____
+
+
+
+### 0. COMMON CONFIG 
+
+You have to configure px4 parameters in QGroundControl so that the pixhawk can utilize the external position estimate from vicon or VIO module (you can even fuse them with GPS in HTIL). In order for that, 
+
+* Change EKF2 estimator group rather than LPE.
+
+* EKF2_AID_MASK = Vision 
+
+* EKF2_HGT_MODE = Vision 
+
+  
+
+### 1. SITL
 
 #### (1) git clone 
 
@@ -54,71 +123,78 @@ In this package, we will extract tf information coming from gazebo. In order for
 git clone https://github.com/PX4/Firmware.git
 ```
 
-#### (2) building for SITL (simulation in the loop) and run gazebo simulator 
+Add the following in your bash (to enable roscd px4)
 
 ```
-cd /path/to/Firmware
-make  px4_sitl_default gazebo
-or 
-HEADLESS=1 make  px4_sitl_default gazebo
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/path/to/Firmware
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/path/to/Firmware/Tools/sitl_gazebo
 ```
 
-This process is basically the same procedure to prepare an actual drone.
-
-Try it : pxh>commander takeoff  in the terminal 
-
-The simulation calls the launch file: Firmware/Tools/sitl_gazebo/worlds/*.world
-
-**For the gazebo_ros wrapper (recommended), run ```source /home/jbs/lib/Firmware/Tools/setup_gazebo.bash /home/jbs/lib/Firmware /home/jbs/lib/Firmware/build/px4_sitl_default```.  Then  add the following lines in bashrc **
+#### (2) build for SITL (simulation in the loop) and run gazebo simulator 
 
 ```
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/jbs/lib/Firmware
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/jbs/lib/Firmware/Tools/sitl_gazebo
-```
-
-Run the following command to start up the px4 + gazebo + ros(gazebo server)
-
-```
-roslaunch px4 posix_sitl.launch
-```
-
-
-
-#### (3) run px4.luanch 
-
-```
-roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
-```
-
-The udp 14540 is link to the SITL in the gazebo.  The 127.0.0.1:14557 is the local host 
-
-#### (4) (Optional) QGroundControl
-
-### 1.1 ros wrapping for gazebo
-
-```
-cd /path/to/Firware
-
 no_sim=1 make px4_sitl_default gazebo
-# This following should be executed after a make    
+
+# This sourcing should be executed every after a make in the terminal where you will launch the following (NOTE!!!) 
+
 source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+roslaunch px4_code run_px4_for_sitl.launch 
+```
 
-# opt1
-roslaunch gazebo_ros empty_world.launch world_name:=$(pwd)/Tools/sitl_gazebo/worlds/iris.world gui:=false
+### 2. SITL 
 
-# opt2
-roslaunch px4_code run_px4_for_sitl.launch
+### (3) launch px4_code pacakges
+
+```
+roslaunch px4_code run_mav_gcs_wrapper.launch
+```
+
+This will run the two nodes mentioned in introduction. You might have to modify frame in the parameter setting in the launch file. 
+
+If things was configured whell, your px4 shell will say after the px4_code launch  
+
+```
+INFO  [ecl/EKF] EKF commencing external vision position fusion
+INFO  [ecl/EKF] EKF commencing external vision yaw fusion
+```
+
+- 1. check if /mavros/local_position/pose and /mavros/vision_pose/pose similar(they should be very close.). If not, check whether the two has same time stamp! 
+
+Also, you could see the topics and tf in as the following rviz.
+
+<img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/SITL_rviz.png">
+
+As can be seen, the /mavros/local_position/pose should be almost same with the tf coming from gazebo.  
+
+The red arrow denotes the setpoint which is currently initialized with the current pose. 
+
+### (4) So. let's try px4_code!  
+
+* Step 1 : press ros connect in gui! Once done, mav_gcs_node will appear in rosnode list
+* Step 2: press initialize button. This will initialize the current setpoint from keyboard. 
+* Step 3: press disarmed button.  From this, you wll see rotor0 operating 
+* Step 4. press set offboard button. The flight mode will change from manual into offboard from which mavros will listen setpoint as control object. Move mav with keyboard! 
+* Step 5. If you have node which publishes /mav_wrapper/setpoint_planning [geometry_msgs/PoseStamped], try pressing planner button. This will listen the setpoint from planner.  
+
+### 3. HITL 
+
+ From this, you will have to run mav_gcs_node and mav_wrapper separately. 
+
+#### Onboard 
+
+```
+roslaunch px4_code run_mav_wrapper.launch
+```
+
+#### Labtop 
+
+```
+roalaunch vicon_bridge vicon.launch (in my setting)
+rosrun px4_code mav_gcs_node
+#TODO roslaunch px4_code run_mav_gcs_node_onboard.launch (including rviz)
 ```
 
 
 
-### 2. Custom code 
-
-```
-roslaunch px4_code run_px4_for_sitl.launch
-```
-
-
-
-
+###  
 
