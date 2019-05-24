@@ -40,6 +40,7 @@ class MavWrapper{
         geometry_msgs::PoseStamped pose_des_keyboard; 
         geometry_msgs::PoseStamped pose_des_planner; 
         geometry_msgs::PoseStamped pose_init;
+        geometry_msgs::PoseStamped pose_mavros; // mavros local position
 
         mavros_msgs::State mav_state; // px4 state from mavros 
         tf::TransformListener* tf_listener; 
@@ -47,6 +48,7 @@ class MavWrapper{
         ros::Publisher pub_setpoint; // published merged 
         ros::Publisher pub_cur_pose; // publish for mocap/pose  
         ros::Subscriber sub_control_pose; // pose which is to be controlled (planner mode)
+        ros::Subscriber sub_mavros_pose; // pose 
         ros::Subscriber sub_state; // mav state callback from mavros 
         ros::ServiceServer server_init_home; // initialize homing point 
         ros::ServiceServer server_key_input; // receive keyinput and modify the setpoint
@@ -75,6 +77,7 @@ class MavWrapper{
         bool update_tf();
         void cb_setpoint(geometry_msgs::PoseStampedConstPtr pose);
         void cb_state(mavros_msgs::StateConstPtr state);        
+        void cb_mavros_local_pose(geometry_msgs::PoseStampedConstPtr local_pose);        
         // move mav from current pose    
         bool move_mav(double dx,double dy,double dz,double dyaw);                        
         // flags

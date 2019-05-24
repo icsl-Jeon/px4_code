@@ -13,6 +13,7 @@ MavWrapper::MavWrapper():nh("~"){
     
     // ros comm 
     sub_control_pose = nh.subscribe("/mav_wrapper/setpoint_planning",1,&MavWrapper::cb_setpoint,this);
+    sub_mavros_pose = nh.subscribe("/mavros/local_position/pose",1,&MavWrapper::cb_mavros_local_pose,this);
     sub_state =nh.subscribe("/mavros/state", 10, &MavWrapper::cb_state,this);
     pub_setpoint = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 10);
     pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose",10);
@@ -75,10 +76,15 @@ void MavWrapper::cb_state(mavros_msgs::StateConstPtr state){
     is_offboard = state->mode == "OFFBOARD";   
 }
 
+void MavWrapper::cb_mavros_local_pose(geometry_msgs::PoseStampedConstPtr pose){
+	pose_mavros = *pose;
+}
+
+
 
 bool MavWrapper::mav_init(){
     if (is_tf_recieved){
-        pose_des_keyboard = pose_cur;        
+        pose_des_keyboard = pose_mavros;        
         is_init_mav = true;
         ROS_INFO("[Mav Wrapper] Initializing the homing point with the current pose");
         return true;

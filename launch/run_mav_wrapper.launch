@@ -8,11 +8,6 @@
 
 <node pkg="tf" type="static_transform_publisher" name="tf_mapper_mav" args="0 0 0  0  0  0 map world 100" />
 
-    <!--mav gcs-->
-    <node name="mav_gcs_node" pkg="px4_code" type="mav_gcs_node">
-        <arg name="planner_node_name" value="/planner_client"/>         
-    </node>
-
     <!--mav wrapper-->
     <node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">   
         <param name="mav_frame_id" value="/vicon/mav_felipe/mav_felipe"/>         
