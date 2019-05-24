@@ -26,6 +26,6 @@
 
 
 
-<node name="rviz" pkg="rviz" type="rviz" args="-d $(find px4_code)/rviz/rviz.rviz"/>
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find px4_code)/rviz/rviz_sitl.rviz"/>
 
 </launch>

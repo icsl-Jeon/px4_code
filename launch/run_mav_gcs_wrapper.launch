@@ -17,5 +17,9 @@
     <node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">   
         <param name="mav_frame_id" value="/vicon/mav_felipe/mav_felipe"/>         
         <param name="world_frame_id" value="/world"/>         
-    </node>
+        <!--
+	<param name="mav_frame_id" value="/iris__base_link"/>         
+        <param name="world_frame_id" value="/map"/>         
+	-->    
+</node>
 </launch>
