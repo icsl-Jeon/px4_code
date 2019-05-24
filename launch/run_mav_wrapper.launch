@@ -11,7 +11,13 @@
     <!--mav wrapper-->
     <node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">   
         <param name="mav_frame_id" value="/vicon/mav_felipe/mav_felipe"/>         
-        <param name="world_frame_id" value="/world"/>         
+        <param name="world_frame_id" value="/world"/>        
+        
+        <param name="vo_frame_id" value="/zed_camera_center"/>         
+        <param name="vo_ref_frame_id" value="/zed_vo_ref_frame"/>        
+        <param name="vo_mode" value="true"/>         
+        
+
     </node>
 </launch>
 

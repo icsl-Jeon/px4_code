@@ -36,7 +36,7 @@ class MavWrapper{
 
         string mav_frame_id; 
         string world_frame_id;
-        string vo_init_frame_id; 
+        string vo_ref_frame_id; 
         string vo_frame_id;
 
         geometry_msgs::PoseStamped pose_cur; // current pose of MAV 

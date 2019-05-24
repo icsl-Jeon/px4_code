@@ -5,6 +5,10 @@ MavWrapper::MavWrapper():nh("~"){
     // parameter parsing 
     nh.param<string>("mav_frame_id",mav_frame_id,"/iris__base_link");
     nh.param<string>("world_frame_id",world_frame_id,"/world");
+    
+    nh.param<string>("vo_frame_id",vo_frame_id,"/zed_camera_center");
+    nh.param<string>("vo_ref_frame_id",vo_ref_frame_id,"/zed_vo_ref_frame");
+    nh.param<bool>("vo_mode",listen_vo_init_pose,false);    
     nh.param<double>("hovering_height",hovering_height,1.0);
     double time_out; // sec 
     nh.param<double>("init_timeout",time_out,2.0);
@@ -60,7 +64,7 @@ bool MavWrapper::update_tf_mocap(){
         
     }
     catch (tf::TransformException ex){
-        ROS_ERROR_ONCE("[Mav Wrapper] tf of mav does not exist under mocap.",ex.what());  
+        ROS_ERROR("[Mav Wrapper] tf of mav does not exist under mocap.",ex.what());  
         return false;
     }
 }
@@ -90,16 +94,17 @@ bool MavWrapper::update_tf_vio(){
         
     }
     catch (tf::TransformException ex){
-        ROS_ERROR_ONCE("[Mav Wrapper] tf of mav does not exist under VIO mode.",ex.what());  
+        ROS_ERROR("[Mav Wrapper] tf of mav does not exist under VIO mode.",ex.what());  
         return false;
     }
 }
 
 void MavWrapper::talk_init_tf_vo(){
     // if we use vio from camera, we need to connect the ref frame of vo and world frame for comparison
-    if (listen_vo_init_pose){
+    if (listen_vo_init_pose and is_vo_init_pose){
         transform_from_world_to_vo_ref.frame_id_ = world_frame_id;
-        transform_from_world_to_vo_ref.child_frame_id_ = vo_init_frame_id;
+        transform_from_world_to_vo_ref.child_frame_id_ = vo_ref_frame_id;
+        transform_from_world_to_vo_ref.stamp_ = ros::Time::now();
         tf_talker->sendTransform(transform_from_world_to_vo_ref);        
     }
 }
