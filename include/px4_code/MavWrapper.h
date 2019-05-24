@@ -11,6 +11,7 @@
 #include <geometry_msgs/PoseStamped.h>
 #include <tf/tf.h>
 #include <tf/transform_listener.h>
+#include <tf/transform_broadcaster.h>
 #include <tf/transform_datatypes.h>
 #include <tf_conversions/tf_eigen.h>
 #include <Eigen/Core>
@@ -35,6 +36,8 @@ class MavWrapper{
 
         string mav_frame_id; 
         string world_frame_id;
+        string vo_init_frame_id; 
+        string vo_frame_id;
 
         geometry_msgs::PoseStamped pose_cur; // current pose of MAV 
         geometry_msgs::PoseStamped pose_des_keyboard; 
@@ -44,7 +47,9 @@ class MavWrapper{
 
         mavros_msgs::State mav_state; // px4 state from mavros 
         tf::TransformListener* tf_listener; 
-
+        tf::TransformBroadcaster* tf_talker; // for connecting referance frame of vo moudle and global positioning sensor
+        tf::StampedTransform transform_from_world_to_vo_ref; // required only when global position is important even VIO 
+        
         ros::Publisher pub_setpoint; // published merged 
         ros::Publisher pub_cur_pose; // publish for mocap/pose  
         ros::Subscriber sub_control_pose; // pose which is to be controlled (planner mode)
@@ -74,7 +79,9 @@ class MavWrapper{
         bool swtich_mode_callback(px4_code::SwitchModeRequest & req, px4_code::SwitchModeResponse & resp);
 
         // callback 
-        bool update_tf();
+        bool update_tf_mocap();
+        bool update_tf_vio();
+        void talk_init_tf_vo();
         void cb_setpoint(geometry_msgs::PoseStampedConstPtr pose);
         void cb_state(mavros_msgs::StateConstPtr state);        
         void cb_mavros_local_pose(geometry_msgs::PoseStampedConstPtr local_pose);        
@@ -85,7 +92,10 @@ class MavWrapper{
         bool is_armed = false;
         bool is_offboard = false;
         bool is_tf_recieved = false;
-        bool is_init_mav = false;  
-        bool is_planning_received  = false;        
+        bool is_init_mav = false;  // initialized homing point 
+        bool is_planning_received  = false;      
+        bool listen_vo_init_pose = false; // get start pose of camera map frame from vicon  
+        // the start pose of camera referance frame is assumed to have same rotation matrix with vicon  
+        bool is_vo_init_pose = false;
 };
 
