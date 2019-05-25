@@ -1,11 +1,2 @@
 digraph G {
-"world" -> "vicon/mav_felipe/mav_felipe"[label="Broadcaster: /vicon\nAverage rate: 99.680 Hz\nMost recent transform: 1558673785.952 ( 0.001 sec old)\nBuffer length: 4.956 sec\n"];
-"map" -> "world"[label="Broadcaster: /tf_mapper_mav\nAverage rate: 10.191 Hz\nMost recent transform: 1558673785.963 ( -0.010 sec old)\nBuffer length: 4.808 sec\n"];
-"odom" -> "zed_camera_center"[label="Broadcaster: /zed/zed_wrapper_node\nAverage rate: 4850000.000 Hz\nMost recent transform: 1558673658.831 ( 127.122 sec old)\nBuffer length: 0.000 sec\n"];
-"zed_vo_ref_frame" -> "odom"[label="Broadcaster: /zed/zed_wrapper_node\nAverage rate: 4850000.000 Hz\nMost recent transform: 1558673658.831 ( 127.122 sec old)\nBuffer length: 0.000 sec\n"];
-"world" -> "zed_vo_ref_frame"[label="Broadcaster: /mav_wrapper_node\nAverage rate: 40.203 Hz\nMost recent transform: 1558673785.930 ( 0.023 sec old)\nBuffer length: 4.925 sec\n"];
-edge [style=invis];
- subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1558673785.953"[ shape=plaintext ] ;
- }->"map";
-}
+"no tf data recieved"}

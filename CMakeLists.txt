@@ -12,6 +12,7 @@ geometry_msgs
 tf
 tf_conversions
 qt_build
+rosgraph_msgs
 )
 
 find_package(Eigen3 REQUIRED NO_MODULE)

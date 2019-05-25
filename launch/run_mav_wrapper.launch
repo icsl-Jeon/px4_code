@@ -7,6 +7,8 @@
     </include> -->
 
 <node pkg="tf" type="static_transform_publisher" name="tf_mapper_mav" args="0 0 0  0  0  0 map world 100" />
+<!--if no vicon avaiable-->
+<node pkg="tf" type="static_transform_publisher" name="tf_mapper_mav_no_vicon" args="0 0 0  0  0  0 world /vicon/mav_felipe/mav_felipe 100" />
 
     <!--mav wrapper-->
     <node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">   
@@ -16,8 +18,8 @@
         <param name="vo_frame_id" value="/zed_camera_center"/>         
         <param name="vo_ref_frame_id" value="/zed_vo_ref_frame"/>        
         <param name="vo_mode" value="true"/>         
+        <param name="vo_pose_topic" value="/zed/pose"/>         
         
-
     </node>
 </launch>
 

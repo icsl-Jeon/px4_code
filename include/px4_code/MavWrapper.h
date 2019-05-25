@@ -15,6 +15,7 @@
 #include <tf/transform_datatypes.h>
 #include <tf_conversions/tf_eigen.h>
 #include <Eigen/Core>
+#include <rosgraph_msgs/Clock.h>
 
 /**
  * @brief 
@@ -33,11 +34,12 @@ class MavWrapper{
 
     private:
         ros::NodeHandle nh;
-
+        ros::Time cur_clock; // current clock 
         string mav_frame_id; 
         string world_frame_id;
         string vo_ref_frame_id; 
         string vo_frame_id;
+        string vo_pose_topic_name; 
 
         geometry_msgs::PoseStamped pose_cur; // current pose of MAV 
         geometry_msgs::PoseStamped pose_des_keyboard; 
@@ -50,6 +52,7 @@ class MavWrapper{
         tf::TransformBroadcaster* tf_talker; // for connecting referance frame of vo moudle and global positioning sensor
         tf::StampedTransform transform_from_world_to_vo_ref; // required only when global position is important even VIO 
         
+        ros::Publisher clock_server; //clock server 
         ros::Publisher pub_setpoint; // published merged 
         ros::Publisher pub_cur_pose; // publish for mocap/pose  
         ros::Subscriber sub_control_pose; // pose which is to be controlled (planner mode)
@@ -58,6 +61,8 @@ class MavWrapper{
         ros::ServiceServer server_init_home; // initialize homing point 
         ros::ServiceServer server_key_input; // receive keyinput and modify the setpoint
         ros::ServiceServer server_switch_mode; // 
+        ros::Subscriber sub_zed_vo_topic; // this is for activating vo publish for zed_wrapper 
+
         unsigned int mode = 0; // 0: keyboard 1: planner setpoint 
         
         double hovering_height;
@@ -82,6 +87,7 @@ class MavWrapper{
         bool update_tf_mocap();
         bool update_tf_vio();
         void talk_init_tf_vo();
+        void cb_vo_topic(geometry_msgs::PoseStampedConstPtr pose);
         void cb_setpoint(geometry_msgs::PoseStampedConstPtr pose);
         void cb_state(mavros_msgs::StateConstPtr state);        
         void cb_mavros_local_pose(geometry_msgs::PoseStampedConstPtr local_pose);        

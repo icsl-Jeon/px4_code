@@ -8,6 +8,8 @@ MavWrapper::MavWrapper():nh("~"){
     
     nh.param<string>("vo_frame_id",vo_frame_id,"/zed_camera_center");
     nh.param<string>("vo_ref_frame_id",vo_ref_frame_id,"/zed_vo_ref_frame");
+    nh.param<string>("vo_pose_topic",vo_pose_topic_name,"/zed/pose");
+
     nh.param<bool>("vo_mode",listen_vo_init_pose,false);    
     nh.param<double>("hovering_height",hovering_height,1.0);
     double time_out; // sec 
@@ -20,6 +22,8 @@ MavWrapper::MavWrapper():nh("~"){
     // ros comm 
     sub_control_pose = nh.subscribe("/mav_wrapper/setpoint_planning",1,&MavWrapper::cb_setpoint,this);
     sub_mavros_pose = nh.subscribe("/mavros/local_position/pose",1,&MavWrapper::cb_mavros_local_pose,this);
+    sub_zed_vo_topic = nh.subscribe(vo_pose_topic_name,1,&MavWrapper::cb_vo_topic,this);
+    clock_server = nh.advertise<rosgraph_msgs::Clock>("/clock",1);
     sub_state =nh.subscribe("/mavros/state", 10, &MavWrapper::cb_state,this);
     pub_setpoint = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 10);
     pub_cur_pose = nh.advertise<geometry_msgs::PoseStamped>("/mavros/vision_pose/pose",10);
@@ -29,7 +33,7 @@ MavWrapper::MavWrapper():nh("~"){
 
 }
 
-MavWrapper::~MavWrapper(){
+MavWrapper::~MavWrapper(){    
     delete tf_listener;
 }   
 
@@ -132,6 +136,9 @@ void MavWrapper::cb_mavros_local_pose(geometry_msgs::PoseStampedConstPtr pose){
 	pose_mavros = *pose;
 }
 
+void MavWrapper::cb_vo_topic(geometry_msgs::PoseStampedConstPtr pose){
+    // no need to do something.
+}
 
 
 bool MavWrapper::mav_init(){
@@ -266,7 +273,8 @@ void MavWrapper::run(){
             update_tf_mocap(); // update mocap
                 
         publish_externally_estimated_pose(); // the pose published will be used for mavros
-        
+        clock_server.publish(ros::Time::now());
+
         // still not initialized
         if(not is_init_mav)  
             mav_init();
