@@ -128,12 +128,12 @@ devel/lib/px4_code/mav_wrapper_node: /usr/lib/x86_64-linux-gnu/libboost_filesyst
 devel/lib/px4_code/mav_wrapper_node: /usr/lib/x86_64-linux-gnu/libboost_signals.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libxmlrpcpp.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libtf2.so
-devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libroscpp_serialization.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/librosconsole.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
 devel/lib/px4_code/mav_wrapper_node: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 devel/lib/px4_code/mav_wrapper_node: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libroscpp_serialization.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/librostime.so
 devel/lib/px4_code/mav_wrapper_node: /opt/ros/kinetic/lib/libcpp_common.so
 devel/lib/px4_code/mav_wrapper_node: /usr/lib/x86_64-linux-gnu/libboost_system.so
