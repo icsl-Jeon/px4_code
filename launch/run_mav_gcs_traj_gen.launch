@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    
+    <!-- <include file = "$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="gui" value="false"/> 
+        <arg name="world_name" value="$(find px4)/Tools/sitl_gazebo/worlds/iris.world"/> 
+    </include> -->
+
+    <!--mav gcs-->
+    <node name="mav_gcs_node" pkg="px4_code" type="mav_gcs_node">
+        <param name="planner_node_name" value="/planner_client"/>         
+    </node>
+
+    <!--traj gen-->
+    <node name="traj_gen_ui" pkg="traj_gen" type="traj_gen_client">
+        <remap from="/traj_gen_ui/control_pose" to="/mav_wrapper/setpoint_planning"/>
+    </node>
+
+</launch>

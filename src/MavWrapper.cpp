@@ -8,7 +8,7 @@ MavWrapper::MavWrapper():nh("~"){
     
     nh.param<string>("external_pose_topic",ext_pose_topic,"/vicon/mav_felipe/mav_felipe");    
     nh.param<string>("external_pose_cov_topic",ext_pose_cov_topic,"/vicon/mav_felipe/mav_felipe");    
-    nh.param<string>("external_odom_topic",ext_pose_topic,"/vins_estimator/camera_pose");    
+    nh.param<string>("external_odom_topic",ext_odom_topic,"/vins_estimator/camera_pose");    
 
 
     nh.param<bool>("pose_on",is_pose,true);    
