@@ -86,3 +86,8 @@ target_link_libraries(mav_wrapper_node
 add_executable(mav_gcs_node ${QT_DIR}/main.cpp  ${QT_FORMS_CPP} ${QT_SOURCES} ${QT_MOC_HPP})
 target_link_libraries(mav_gcs_node ${catkin_LIBRARIES} ${QT_LIBRARIES})
 
+
+add_executable(tf2poseStamped_node src/tf_to_posestamped_node.cpp )
+target_link_libraries(tf2poseStamped_node ${catkin_LIBRARIES} )
+
+

@@ -132,35 +132,49 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/path/to/Firmware/Tools/sitl_gazebo
 
 #### (2) build for SITL (simulation in the loop) and run gazebo simulator 
 
+#### a. Build px4 firmware. Recommended every time you try to launch a SITL  <a name = "a" ></a> 
+
 ```
+cd path/to/px4_firmware  
 no_sim=1 make px4_sitl_default gazebo
+```
 
-# This sourcing should be executed every after a make in the terminal where you will launch the following (NOTE!!!) 
+#### b. sourcing should be executed every after a make in the terminal where you will launch the following (NOTE!!!) 
 
-source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+In another terminal (could be any terminal except the above), let us launch SITL with gazebo. Should ```source``` ( first line) per every launch(second line)  
+
+```
+source path/to/px4_firmware/Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
 roslaunch px4_code run_px4_for_sitl.launch 
 ```
 
-### 2. SITL 
-
-### (3) launch px4_code pacakges
+### 3) launch px4_code pacakges
 
 ```
-roslaunch px4_code run_mav_gcs_wrapper.launch
+roslaunch px4_code run_mav_gcs_wrapper_sitl.launch
 ```
 
-This will run the two nodes mentioned in introduction. You might have to modify frame in the parameter setting in the launch file. 
+This will run the two nodes mentioned in introduction. You might have to modify ```external_pose_topic```  in the parameter setting in the launch file. 
 
-If things was configured whell, your px4 shell will say after the px4_code launch  
+If things was configured whell, your px4 shell [px4_shell](#a) will say after the px4_code launch  
 
 ```
 INFO  [ecl/EKF] EKF commencing external vision position fusion
 INFO  [ecl/EKF] EKF commencing external vision yaw fusion
 ```
 
-- 1. check if /mavros/local_position/pose and /mavros/vision_pose/pose similar(they should be very close.). If not, check whether the two has same time stamp! 
+- check if /mavros/local_position/pose and /mavros/vision_pose/pose similar(they should be very close.). If not, check whether the two has same time stamp! 
 
-Also, you could see the topics and tf in as the following rviz.
+- If mav_wrapper_node received external pose topic and ```mavros/local_position/pose``` , the following will appear from px4_code terminal 
+
+  ```
+  [ INFO] [1563892246.976191576, 241.848000000]: received external pose.
+  [ INFO] [1563892247.004177214, 241.876000000]: [Mav Wrapper] Initializing the homing point with the current pose
+  [ INFO] [1563892247.028217821, 241.900000000]: Start publishing setpoint.
+  [ INFO] [1563892299.438848425, 294.224000000]: [Mav Wrapper] Initializing the homing point with the current pose
+  ```
+
+  Also, you could see the topics and tf in as the following rviz.
 
 <img src="https://github.com/icsl-Jeon/px4_code/blob/master/img/SITL_rviz.png">
 
@@ -170,6 +184,10 @@ The red arrow denotes the setpoint which is currently initialized with the curre
 
 ### (4) So. let's try px4_code!  
 
+```
+rosrun px4_code mav_gcs_node 
+```
+
 * Step 1 : press ros connect in gui! Once done, mav_gcs_node will appear in rosnode list
 * Step 2: press initialize button. This will initialize the current setpoint from keyboard. 
 * Step 3: press disarmed button.  From this, you wll see rotor0 operating 
@@ -178,18 +196,28 @@ The red arrow denotes the setpoint which is currently initialized with the curre
 
 ### 3. HITL 
 
- From this, you will have to run mav_gcs_node and mav_wrapper separately. 
+ From this, you will have to run mav_gcs_node and mav_wrapper separately. We should run mav_wrapper in onboard computer where ```mavros``` will be launched 
 
-#### Onboard 
+#### Onboard side
+
+#### In terminal A
+
+````
+roslaunch mavros px4.launch
+````
+
+#### In terminal B  
 
 ```
 roslaunch px4_code run_mav_wrapper.launch
 ```
 
-#### Labtop 
+#### On the side of labtop or other computer which provides external position estimate 
+
+make sure ```<param name="external_pose_topic" value="$(some topic)"/>```
 
 ```
-roalaunch vicon_bridge vicon.launch (in my setting)
+roalaunch vicon_bridge vicon.launch (in my setting, it provides pose topic )
 rosrun px4_code mav_gcs_node
 #TODO roslaunch px4_code run_mav_gcs_node_onboard.launch (including rviz)
 ```

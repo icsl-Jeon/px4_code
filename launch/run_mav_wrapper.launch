@@ -7,12 +7,9 @@
         <param name="mav_frame_id" value="/vicon/mav_felipe/mav_felipe"/>
         <param name="world_frame_id" value="/world"/>
         <param name="external_pose_topic" value="/zed/pose"/>
-        <param name="external_pose_cov_topic" value="/zed/pose_with_covariance"/>
 
         <param name="pose_on" value="true"/>
-        <param name="pose_cov_on" value="true"/>
-        <param name="odom_on" value="true"/>
-            
+           
     </node>
 </launch>
 

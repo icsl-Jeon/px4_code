@@ -95,24 +95,23 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          {}
-        world:
-          gazebo_world:
-            asphalt_plane__link:
-              {}
-            ground_plane__link:
-              {}
-            iris__base_link:
-              iris__/imu_link:
+          world:
+            gazebo_world:
+              asphalt_plane__link:
                 {}
-              iris__rotor_0:
+              ground_plane__link:
                 {}
-              iris__rotor_1:
-                {}
-              iris__rotor_2:
-                {}
-              iris__rotor_3:
-                {}
+              iris__base_link:
+                iris__/imu_link:
+                  {}
+                iris__rotor_0:
+                  {}
+                iris__rotor_1:
+                  {}
+                iris__rotor_2:
+                  {}
+                iris__rotor_3:
+                  {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -143,6 +142,21 @@ Visualization Manager:
       Shaft Radius: 0.0500000007
       Shape: Arrow
       Topic: /mavros/local_position/pose
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.100000001
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.300000012
+      Head Radius: 0.100000001
+      Name: Pose
+      Shaft Length: 1
+      Shaft Radius: 0.0500000007
+      Shape: Arrow
+      Topic: /vicon/mav_felipe/mav_felipe
       Unreliable: false
       Value: true
   Enabled: true
@@ -177,18 +191,18 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.05525565
-        Y: 0.835535884
-        Z: -0.0253558904
+        X: 0.932418644
+        Y: 1.16083968
+        Z: 0.0334290713
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.544797778
+      Pitch: 0.469797611
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.62358236
+      Yaw: 3.5885849
     Saved: ~
 Window Geometry:
   Displays:
@@ -206,5 +220,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 928
-  X: 992
+  X: 620
   Y: 24
