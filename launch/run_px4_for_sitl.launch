@@ -7,9 +7,14 @@
 </include>
 -->
 
+<arg name = "world_name" default = "map2"/>
+<arg name="world_file" default="$(find px4_code)/worlds/map2_iris_fpv_cam.world"/> 
+
 <include file = "$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="gui" value="false"/> 
-    <arg name="world_name" value="$(find px4)/Tools/sitl_gazebo/worlds/iris.world"/> 
+	<!--ros plugins should be disabled! for world file -->
+	<arg name="world_name" value="$(arg world_file)"/> 
+	<arg name="verbose" value="true"/> 
 </include>
 
 <!--mavlink-->
@@ -23,7 +28,6 @@
 <!--gazebo2rviz-->
 <include file = "$(find gazebo2rviz)/launch/gazebo2rviz.launch">
 </include>
-
 
 
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find px4_code)/rviz/rviz_sitl.rviz"/>

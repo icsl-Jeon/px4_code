@@ -4,15 +4,9 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /Status1
-        - /Grid1
-        - /TF1
         - /TF1/Frames1
-        - /Pose1
-        - /Pose2
-      Splitter Ratio: 0.404651165
-    Tree Height: 787
+      Splitter Ratio: 0.418454945
+    Tree Height: 388
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -31,7 +25,9 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Image
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -58,8 +54,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        asphalt_plane__link:
-          Value: false
         fcu:
           Value: false
         fcu_frd:
@@ -68,17 +62,19 @@ Visualization Manager:
           Value: false
         ground_plane__link:
           Value: false
-        iris__/imu_link:
+        iris_fpv_cam__fpv_cam__link:
           Value: false
-        iris__base_link:
+        iris_fpv_cam__iris__/imu_link:
+          Value: false
+        iris_fpv_cam__iris__base_link:
           Value: true
-        iris__rotor_0:
+        iris_fpv_cam__iris__rotor_0:
           Value: true
-        iris__rotor_1:
+        iris_fpv_cam__iris__rotor_1:
           Value: false
-        iris__rotor_2:
+        iris_fpv_cam__iris__rotor_2:
           Value: false
-        iris__rotor_3:
+        iris_fpv_cam__iris__rotor_3:
           Value: false
         local_origin:
           Value: false
@@ -86,6 +82,28 @@ Visualization Manager:
           Value: false
         map:
           Value: true
+        map.world__Wall_0:
+          Value: false
+        map.world__Wall_2:
+          Value: false
+        map.world__Wall_4:
+          Value: false
+        map.world__Wall_6:
+          Value: false
+        map.world__Wall_9:
+          Value: false
+        table__link:
+          Value: false
+        unit_box_0_0__link:
+          Value: false
+        unit_cylinder_0__link:
+          Value: false
+        unit_cylinder_0_clone__link:
+          Value: false
+        unit_cylinder_0_clone_clone__link:
+          Value: false
+        unit_cylinder_1__link:
+          Value: false
         world:
           Value: false
       Marker Scale: 1
@@ -95,23 +113,46 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          world:
-            gazebo_world:
-              asphalt_plane__link:
+          {}
+        world:
+          gazebo_world:
+            ground_plane__link:
+              {}
+            iris_fpv_cam__iris__base_link:
+              iris_fpv_cam__fpv_cam__link:
                 {}
-              ground_plane__link:
+              iris_fpv_cam__iris__/imu_link:
                 {}
-              iris__base_link:
-                iris__/imu_link:
-                  {}
-                iris__rotor_0:
-                  {}
-                iris__rotor_1:
-                  {}
-                iris__rotor_2:
-                  {}
-                iris__rotor_3:
-                  {}
+              iris_fpv_cam__iris__rotor_0:
+                {}
+              iris_fpv_cam__iris__rotor_1:
+                {}
+              iris_fpv_cam__iris__rotor_2:
+                {}
+              iris_fpv_cam__iris__rotor_3:
+                {}
+            map.world__Wall_0:
+              {}
+            map.world__Wall_2:
+              {}
+            map.world__Wall_4:
+              {}
+            map.world__Wall_6:
+              {}
+            map.world__Wall_9:
+              {}
+            table__link:
+              {}
+            unit_box_0_0__link:
+              {}
+            unit_cylinder_0__link:
+              {}
+            unit_cylinder_0_clone__link:
+              {}
+            unit_cylinder_0_clone_clone__link:
+              {}
+            unit_cylinder_1__link:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -122,7 +163,7 @@ Visualization Manager:
       Enabled: true
       Head Length: 0.100000001
       Head Radius: 0.100000001
-      Name: Pose
+      Name: mavros setpoint
       Shaft Length: 0.300000012
       Shaft Radius: 0.0500000007
       Shape: Arrow
@@ -137,7 +178,7 @@ Visualization Manager:
       Enabled: true
       Head Length: 0.300000012
       Head Radius: 0.100000001
-      Name: Pose
+      Name: mavros local position (fused)
       Shaft Length: 1
       Shaft Radius: 0.0500000007
       Shape: Arrow
@@ -152,16 +193,28 @@ Visualization Manager:
       Enabled: true
       Head Length: 0.300000012
       Head Radius: 0.100000001
-      Name: Pose
+      Name: external position information
       Shaft Length: 1
       Shaft Radius: 0.0500000007
       Shape: Arrow
       Topic: /vicon/mav_felipe/mav_felipe
       Unreliable: false
       Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /iris_fpv_cam/usb_cam/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
-    Background Color: 7; 7; 7
+    Background Color: 184; 184; 184
     Default Light: true
     Fixed Frame: world
     Frame Rate: 30
@@ -184,25 +237,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.9340601
+      Distance: 20.5994625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.932418644
-        Y: 1.16083968
-        Z: 0.0334290713
+        X: 2.26534796
+        Y: 1.0710218
+        Z: 3.47361565
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.469797611
+      Pitch: 0.904797077
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.5885849
+      Yaw: 3.10040832
     Saved: ~
 Window Geometry:
   Displays:
@@ -210,7 +263,9 @@ Window Geometry:
   Height: 1028
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd0000000400000000000001bd000003a2fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000000000003a2000000d700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f0000037afc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007300000000280000037a000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000003a00000003efc0100000002fb0000000800540069006d00650100000000000003a00000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000001dd000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
+  Image:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd0000000400000000000001e1000003a2fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000000000000213000000d700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650100000219000001890000001600ffffff000000010000010f0000037afc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007300000000280000037a000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000003a00000003efc0100000002fb0000000800540069006d00650100000000000003a00000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000001b9000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -220,5 +275,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 928
-  X: 620
-  Y: 24
+  X: 65
+  Y: 1104

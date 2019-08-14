@@ -2,10 +2,18 @@
 <launch>
 
 	<arg name = "pose_topic"  default =  "/vicon/mav_felipe/mav_felipe"/>
-	<arg name = "mav_frame_id"  default =  "iris__base_link"/>
+	<arg name = "mav_frame_id"  default =  "iris_fpv_cam__iris__base_link"/>
 
 	<node pkg="tf" type="static_transform_publisher" name="map2world" args="0 0 0 0 0 0 1 /map /world 100" />
-    <!--mav wrapper-->
+ 
+<!--tf from gazebo to external pose topic-->	
+    <node name="tf2pose" pkg="px4_code" type="tf2poseStamped_node" output="screen">   
+	  <param name="map_frame" value="world"/>
+        <param name="base_frame" value="$(arg mav_frame_id)"/>
+        <param name="output_pose_topic" value="$(arg pose_topic)"/>
+	</node>
+
+<!--mav wrapper-->
     <node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">   
               
         <!--param name="mav_frame_id" value="$(arg pose_topic)"/-->
@@ -17,11 +25,10 @@
             
     </node>
 
-<!--tf from gazebo to external pose topic-->	
-    <node name="tf2pose" pkg="px4_code" type="tf2poseStamped_node" output="screen">   
-	  <param name="map_frame" value="world"/>
-        <param name="base_frame" value="$(arg mav_frame_id)"/>
-        <param name="output_pose_topic" value="$(arg pose_topic)"/>
-	</node>
-</launch>
+   <!--mav gcs-->
+       <node name="mav_gcs_node" pkg="px4_code" type="mav_gcs_node">
+	           <arg name="planner_node_name" value="/planner_client"/>         
+		</node>
 
+
+</launch>

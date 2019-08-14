@@ -117,7 +117,7 @@ You have to configure px4 parameters in QGroundControl so that the pixhawk can u
 
 ### 1. SITL
 
-#### (1) git clone 
+#### (1) git clone for pixhawk firmware
 
 ```
 git clone https://github.com/PX4/Firmware.git
@@ -132,29 +132,72 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/path/to/Firmware/Tools/sitl_gazebo
 
 #### (2) build for SITL (simulation in the loop) and run gazebo simulator 
 
-#### a. Build px4 firmware. Recommended every time you try to launch a SITL  <a name = "a" ></a> 
+#### a. Build px4 firmware *if this is the first time*  <a name = "a" ></a> 
 
 ```
-cd path/to/px4_firmware  
+# in terminal opend at path/to/px4_firmware folder:
+no_sim=1 make px4_sitl_default gazebo
+
+# register gazebo model path so that worlds can be loaded from any directory  
+source ./Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+
+# or in your bashrc
+
+export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:/home/jbs/lib/Firmware/build/px4_sitl_default/build_gazebo
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/home/jbs/lib/Firmware/Tools/sitl_gazebo/models
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jbs/lib/Firmware/build/px4_sitl_default/build_gazebo
+```
+
+#### b. run gazebo sitl
+
+Especially, if you want your custom world for px4_sitl simulation, modifiy ```world_file``` parameter in  ```run_px4_for_sitl.launch```. Readily available world files can be found in ./worlds folder.
+
+```
+# in any terminal, prepare the world and spwan drone 
+roslaunch px4_code run_px4_for_sitl.launch 
+
+# in terminal opend at path/to/px4_firmware folder, turn on px4 
 no_sim=1 make px4_sitl_default gazebo
 ```
 
-#### b. sourcing should be executed every after a make in the terminal where you will launch the following (NOTE!!!) 
+#### c. (option) utilizing your own map(.world) to be used for sitl
 
-In another terminal (could be any terminal except the above), let us launch SITL with gazebo. Should ```source``` ( first line) per every launch(second line)  
+Assuming you added ```GAZEBO_MODEL_PATH``` in bashrc as described above, include the model in .world file. 
 
 ```
-source path/to/px4_firmware/Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
-roslaunch px4_code run_px4_for_sitl.launch 
+   <include>
+      <uri>model://iris_fpv_cam</uri>
+      <pose>2.0 0.0 0.2 0 0 0.0</pose>
+    </include>
 ```
+
+Then, make sure the following 2 physics parameters are configured as follows
+
+```
+...
+<real_time_update_rate>250</real_time_update_rate>
+...
+<max_step_size>0.004</max_step_size>
+...
+```
+
+
 
 ### 3) launch px4_code pacakges
+
+This will run the two nodes mentioned in introduction. 
+
+You might have to inspect the arguments in the launch file before proceding. 
+
+- mav_frame_id: gazebo2rviz reads ModelStates in gazebo world and broadcasts /tf. You have to identify the tf name when a drone is spwaned. (e.g. iris_fpv_cam_iris__base_link) 
+
+ * pose_topic : tf2poseStamped_node will read /tf of drone and publish the corresponding pose with topic ```pose_topic```. This topic will be *read* in mav_wrapper to output /mavros/vision_pose/pose.  The process described may seem inefficient, I focused on compatibility of ```px_code``` with gazebo(SITL) or real world (HITL) 
+
+You may procede with the launch after checking them.
 
 ```
 roslaunch px4_code run_mav_gcs_wrapper_sitl.launch
 ```
-
-This will run the two nodes mentioned in introduction. You might have to modify ```external_pose_topic```  in the parameter setting in the launch file. 
 
 If things was configured whell, your px4 shell [px4_shell](#a) will say after the px4_code launch  
 
