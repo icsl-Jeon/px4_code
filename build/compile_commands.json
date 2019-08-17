@@ -26,6 +26,11 @@
 },
 {
   "directory": "/home/jbs/catkin_ws/src/px4_code/build",
+  "command": "/usr/bin/g++-5   -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_PACKAGE_NAME=\\\"px4_code\\\" -I/home/jbs/catkin_ws/src/px4_code/build/devel/include -isystem /usr/include/qt4 -isystem /usr/include/qt4/QtGui -isystem /usr/include/qt4/QtCore -I/home/jbs/catkin_ws/src/px4_code/build -I/home/jbs/catkin_ws/src/px4_code/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3  -O3 -DNDEBUG   -std=c++11 -o CMakeFiles/tf2poseStamped_node.dir/src/tf_to_posestamped_node.cpp.o -c /home/jbs/catkin_ws/src/px4_code/src/tf_to_posestamped_node.cpp",
+  "file": "/home/jbs/catkin_ws/src/px4_code/src/tf_to_posestamped_node.cpp"
+},
+{
+  "directory": "/home/jbs/catkin_ws/src/px4_code/build",
   "command": "/usr/bin/g++-5   -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_PACKAGE_NAME=\\\"px4_code\\\" -I/home/jbs/catkin_ws/src/px4_code/build/devel/include -isystem /usr/include/qt4 -isystem /usr/include/qt4/QtGui -isystem /usr/include/qt4/QtCore -I/home/jbs/catkin_ws/src/px4_code/build -I/home/jbs/catkin_ws/src/px4_code/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3  -O3 -DNDEBUG   -std=c++11 -o CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.o -c /home/jbs/catkin_ws/src/px4_code/src/mav_wrapper_main.cpp",
   "file": "/home/jbs/catkin_ws/src/px4_code/src/mav_wrapper_main.cpp"
 },

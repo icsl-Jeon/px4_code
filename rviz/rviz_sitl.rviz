@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /TF1
         - /TF1/Frames1
         - /external position information1
       Splitter Ratio: 0.603340268
@@ -27,9 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
-Toolbars:
-  toolButtonStyle: 2
+    SyncSource: Image
 Visualization Manager:
   Class: ""
   Displays:
@@ -60,17 +59,100 @@ Visualization Manager:
           Value: false
         fcu_frd:
           Value: false
+        gazebo_world:
+          Value: false
+        ground_plane__link:
+          Value: false
+        iris_fpv_cam__fpv_cam__link:
+          Value: false
+        iris_fpv_cam__iris__/imu_link:
+          Value: false
+        iris_fpv_cam__iris__base_link:
+          Value: true
+        iris_fpv_cam__iris__rotor_0:
+          Value: false
+        iris_fpv_cam__iris__rotor_1:
+          Value: false
+        iris_fpv_cam__iris__rotor_2:
+          Value: false
+        iris_fpv_cam__iris__rotor_3:
+          Value: false
         local_origin:
           Value: false
         local_origin_ned:
           Value: false
+        map:
+          Value: false
+        map.world__Wall_0:
+          Value: false
+        map.world__Wall_2:
+          Value: false
+        map.world__Wall_4:
+          Value: false
+        map.world__Wall_6:
+          Value: false
+        map.world__Wall_9:
+          Value: false
+        table__link:
+          Value: false
+        unit_box_0_0__link:
+          Value: false
+        unit_cylinder_0__link:
+          Value: false
+        unit_cylinder_0_clone__link:
+          Value: false
+        unit_cylinder_0_clone_clone__link:
+          Value: false
+        unit_cylinder_1__link:
+          Value: false
+        world:
+          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: false
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        map:
+          world:
+            gazebo_world:
+              ground_plane__link:
+                {}
+              iris_fpv_cam__iris__base_link:
+                iris_fpv_cam__fpv_cam__link:
+                  {}
+                iris_fpv_cam__iris__/imu_link:
+                  {}
+                iris_fpv_cam__iris__rotor_0:
+                  {}
+                iris_fpv_cam__iris__rotor_1:
+                  {}
+                iris_fpv_cam__iris__rotor_2:
+                  {}
+                iris_fpv_cam__iris__rotor_3:
+                  {}
+              map.world__Wall_0:
+                {}
+              map.world__Wall_2:
+                {}
+              map.world__Wall_4:
+                {}
+              map.world__Wall_6:
+                {}
+              map.world__Wall_9:
+                {}
+              table__link:
+                {}
+              unit_box_0_0__link:
+                {}
+              unit_cylinder_0__link:
+                {}
+              unit_cylinder_0_clone__link:
+                {}
+              unit_cylinder_0_clone_clone__link:
+                {}
+              unit_cylinder_1__link:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -155,25 +237,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.63287163
+      Distance: 20.2898121
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.544730008
-        Y: 0.362807304
-        Z: 0.602941632
+        X: 4.71475554
+        Y: 0.628444195
+        Z: 1.54092145
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.609797001
+      Pitch: 1.56979632
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 2.85721588
+      Yaw: 3.18221831
     Saved: ~
 Window Geometry:
   Displays:

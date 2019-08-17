@@ -1167,6 +1167,19 @@ sensor_msgs_generate_messages_lisp/fast:
 .PHONY : sensor_msgs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named tf2poseStamped_node
+
+# Build rule for target.
+tf2poseStamped_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2poseStamped_node
+.PHONY : tf2poseStamped_node
+
+# fast build rule for target.
+tf2poseStamped_node/fast:
+	$(MAKE) -f CMakeFiles/tf2poseStamped_node.dir/build.make CMakeFiles/tf2poseStamped_node.dir/build
+.PHONY : tf2poseStamped_node/fast
+
+#=============================================================================
 # Target rules for targets named actionlib_generate_messages_cpp
 
 # Build rule for target.
@@ -1308,6 +1321,19 @@ mav_gcs_node_automoc: cmake_check_build_system
 mav_gcs_node_automoc/fast:
 	$(MAKE) -f CMakeFiles/mav_gcs_node_automoc.dir/build.make CMakeFiles/mav_gcs_node_automoc.dir/build
 .PHONY : mav_gcs_node_automoc/fast
+
+#=============================================================================
+# Target rules for targets named tf2poseStamped_node_automoc
+
+# Build rule for target.
+tf2poseStamped_node_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2poseStamped_node_automoc
+.PHONY : tf2poseStamped_node_automoc
+
+# fast build rule for target.
+tf2poseStamped_node_automoc/fast:
+	$(MAKE) -f CMakeFiles/tf2poseStamped_node_automoc.dir/build.make CMakeFiles/tf2poseStamped_node_automoc.dir/build
+.PHONY : tf2poseStamped_node_automoc/fast
 
 #=============================================================================
 # Target rules for targets named mav_wrapper_node_automoc
@@ -1563,6 +1589,33 @@ src/mav_wrapper_main.cpp.s:
 	$(MAKE) -f CMakeFiles/mav_wrapper_node.dir/build.make CMakeFiles/mav_wrapper_node.dir/src/mav_wrapper_main.cpp.s
 .PHONY : src/mav_wrapper_main.cpp.s
 
+src/tf_to_posestamped_node.o: src/tf_to_posestamped_node.cpp.o
+
+.PHONY : src/tf_to_posestamped_node.o
+
+# target to build an object file
+src/tf_to_posestamped_node.cpp.o:
+	$(MAKE) -f CMakeFiles/tf2poseStamped_node.dir/build.make CMakeFiles/tf2poseStamped_node.dir/src/tf_to_posestamped_node.cpp.o
+.PHONY : src/tf_to_posestamped_node.cpp.o
+
+src/tf_to_posestamped_node.i: src/tf_to_posestamped_node.cpp.i
+
+.PHONY : src/tf_to_posestamped_node.i
+
+# target to preprocess a source file
+src/tf_to_posestamped_node.cpp.i:
+	$(MAKE) -f CMakeFiles/tf2poseStamped_node.dir/build.make CMakeFiles/tf2poseStamped_node.dir/src/tf_to_posestamped_node.cpp.i
+.PHONY : src/tf_to_posestamped_node.cpp.i
+
+src/tf_to_posestamped_node.s: src/tf_to_posestamped_node.cpp.s
+
+.PHONY : src/tf_to_posestamped_node.s
+
+# target to generate assembly for a file
+src/tf_to_posestamped_node.cpp.s:
+	$(MAKE) -f CMakeFiles/tf2poseStamped_node.dir/build.make CMakeFiles/tf2poseStamped_node.dir/src/tf_to_posestamped_node.cpp.s
+.PHONY : src/tf_to_posestamped_node.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1653,6 +1706,7 @@ help:
 	@echo "... download_extra_data"
 	@echo "... mavros_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... tf2poseStamped_node"
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... mav_wrapper_node"
@@ -1664,6 +1718,7 @@ help:
 	@echo "... uuid_msgs_generate_messages_eus"
 	@echo "... uuid_msgs_generate_messages_py"
 	@echo "... mav_gcs_node_automoc"
+	@echo "... tf2poseStamped_node_automoc"
 	@echo "... mav_wrapper_node_automoc"
 	@echo "... gmock"
 	@echo "... gmock_main"
@@ -1690,6 +1745,9 @@ help:
 	@echo "... src/mav_wrapper_main.o"
 	@echo "... src/mav_wrapper_main.i"
 	@echo "... src/mav_wrapper_main.s"
+	@echo "... src/tf_to_posestamped_node.o"
+	@echo "... src/tf_to_posestamped_node.i"
+	@echo "... src/tf_to_posestamped_node.s"
 .PHONY : help
 
 

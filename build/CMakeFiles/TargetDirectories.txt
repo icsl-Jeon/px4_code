@@ -82,6 +82,7 @@
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/download_extra_data.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/mavros_msgs_generate_messages_lisp.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/tf2poseStamped_node.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/actionlib_generate_messages_cpp.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/sensor_msgs_generate_messages_py.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/mav_wrapper_node.dir
@@ -93,6 +94,7 @@
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/uuid_msgs_generate_messages_eus.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/uuid_msgs_generate_messages_py.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/mav_gcs_node_automoc.dir
+/home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/tf2poseStamped_node_automoc.dir
 /home/jbs/catkin_ws/src/px4_code/build/CMakeFiles/mav_wrapper_node_automoc.dir
 /home/jbs/catkin_ws/src/px4_code/build/gtest/CMakeFiles/list_install_components.dir
 /home/jbs/catkin_ws/src/px4_code/build/gtest/CMakeFiles/install.dir

@@ -293,15 +293,26 @@ bool MavWrapper::move_mav(double dx,double dy,double dz,double dyaw){
                         pose_des_keyboard.pose.position.y,
                         pose_des_keyboard.pose.position.z);
 
-
+		/**
+        ROS_INFO("current des before appling move: q = [%f, %f, %f, %f] / t = [%f, %f, %f]",q_cur_des.x(),
+																							q_cur_des.y(),
+																							q_cur_des.z(),
+																							q_cur_des.w(),
+																							t_cur_des.getX(),
+																							t_cur_des.getY(),
+																							t_cur_des.getZ()
+																							);
+**/
         tf::Transform transform_cur;
+        transform_cur.setIdentity();
         transform_cur.setRotation(q_cur_des);
-        // transform_cur.setOrigin(t_cur_des);
+        
 
         // transform matrix 
         Eigen::Isometry3d Twb;
         tf::transformTFToEigen(transform_cur,Twb);
-
+		// cout << "T matrix to keyboard des: "<<endl;
+		// cout << Twb.matrix() <<endl;
         Eigen::Vector3d dpose_w = Twb*dpose;
         
         // Step 1: modify xyz 

@@ -18,7 +18,7 @@
     <arg name="gui" value="false"/> 
 	<!--ros plugins should be disabled! for world file -->
 	<arg name="world_name" value="$(arg world_file)"/> 
-	<arg name="verbose" value="true"/> 
+	<arg name="verbose" value="false"/> 
 </include>
 
 <!--mavlink-->
