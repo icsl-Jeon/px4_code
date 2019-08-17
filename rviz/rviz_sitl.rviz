@@ -4,8 +4,10 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
         - /TF1/Frames1
-      Splitter Ratio: 0.418454945
+        - /external position information1
+      Splitter Ratio: 0.603340268
     Tree Height: 388
   - Class: rviz/Selection
     Name: Selection
@@ -25,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Image
+    SyncSource: ""
 Toolbars:
   toolButtonStyle: 2
 Visualization Manager:
@@ -58,53 +60,9 @@ Visualization Manager:
           Value: false
         fcu_frd:
           Value: false
-        gazebo_world:
-          Value: false
-        ground_plane__link:
-          Value: false
-        iris_fpv_cam__fpv_cam__link:
-          Value: false
-        iris_fpv_cam__iris__/imu_link:
-          Value: false
-        iris_fpv_cam__iris__base_link:
-          Value: true
-        iris_fpv_cam__iris__rotor_0:
-          Value: true
-        iris_fpv_cam__iris__rotor_1:
-          Value: false
-        iris_fpv_cam__iris__rotor_2:
-          Value: false
-        iris_fpv_cam__iris__rotor_3:
-          Value: false
         local_origin:
           Value: false
         local_origin_ned:
-          Value: false
-        map:
-          Value: true
-        map.world__Wall_0:
-          Value: false
-        map.world__Wall_2:
-          Value: false
-        map.world__Wall_4:
-          Value: false
-        map.world__Wall_6:
-          Value: false
-        map.world__Wall_9:
-          Value: false
-        table__link:
-          Value: false
-        unit_box_0_0__link:
-          Value: false
-        unit_cylinder_0__link:
-          Value: false
-        unit_cylinder_0_clone__link:
-          Value: false
-        unit_cylinder_0_clone_clone__link:
-          Value: false
-        unit_cylinder_1__link:
-          Value: false
-        world:
           Value: false
       Marker Scale: 1
       Name: TF
@@ -112,47 +70,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          {}
-        world:
-          gazebo_world:
-            ground_plane__link:
-              {}
-            iris_fpv_cam__iris__base_link:
-              iris_fpv_cam__fpv_cam__link:
-                {}
-              iris_fpv_cam__iris__/imu_link:
-                {}
-              iris_fpv_cam__iris__rotor_0:
-                {}
-              iris_fpv_cam__iris__rotor_1:
-                {}
-              iris_fpv_cam__iris__rotor_2:
-                {}
-              iris_fpv_cam__iris__rotor_3:
-                {}
-            map.world__Wall_0:
-              {}
-            map.world__Wall_2:
-              {}
-            map.world__Wall_4:
-              {}
-            map.world__Wall_6:
-              {}
-            map.world__Wall_9:
-              {}
-            table__link:
-              {}
-            unit_box_0_0__link:
-              {}
-            unit_cylinder_0__link:
-              {}
-            unit_cylinder_0_clone__link:
-              {}
-            unit_cylinder_0_clone_clone__link:
-              {}
-            unit_cylinder_1__link:
-              {}
+        {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -189,7 +107,7 @@ Visualization Manager:
       Axes Length: 1
       Axes Radius: 0.100000001
       Class: rviz/Pose
-      Color: 255; 25; 0
+      Color: 0; 0; 0
       Enabled: true
       Head Length: 0.300000012
       Head Radius: 0.100000001
@@ -197,7 +115,7 @@ Visualization Manager:
       Shaft Length: 1
       Shaft Radius: 0.0500000007
       Shape: Arrow
-      Topic: /vicon/mav_felipe/mav_felipe
+      Topic: /mavros/vision_pose/pose
       Unreliable: false
       Value: true
     - Class: rviz/Image
@@ -216,7 +134,7 @@ Visualization Manager:
   Global Options:
     Background Color: 184; 184; 184
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -237,25 +155,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 20.5994625
+      Distance: 4.63287163
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 2.26534796
-        Y: 1.0710218
-        Z: 3.47361565
+        X: -0.544730008
+        Y: 0.362807304
+        Z: 0.602941632
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.904797077
+      Pitch: 0.609797001
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.10040832
+      Yaw: 2.85721588
     Saved: ~
 Window Geometry:
   Displays:
@@ -275,5 +193,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 928
-  X: 65
-  Y: 1104
+  X: 992
+  Y: 24

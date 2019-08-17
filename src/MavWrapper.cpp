@@ -115,9 +115,20 @@ void MavWrapper::cb_ext_odom(nav_msgs::OdometryConstPtr odom){
 bool MavWrapper::mav_init(){
     if (is_tf_recieved and is_mavros_pose_recieved){
         pose_des_keyboard = pose_mavros;        
-        is_init_mav = true;
-        ROS_INFO("[Mav Wrapper] Initializing the homing point with the current pose");
-        return true;
+        if (abs(pose_mavros.pose.position.x) < 1000){
+			is_init_mav = true;
+			ROS_INFO("[Mav Wrapper] Initializing the homing point with the current pose");
+        	return true;
+		
+		}
+		else{
+			
+			is_init_mav = false;
+			ROS_INFO("[Mav Wrapper] tried to initialize homing point from mavros local position. but the value sanity check ( X < 1000) failed.");
+        	return false;
+
+		
+		}
     }
     else 
         {ROS_WARN("[Mav Wrapper] initialization tried but no pose information from either mavros or external unit"); return false;};
@@ -126,11 +137,16 @@ void MavWrapper::publish_setpoint(){
 
     if (is_init_mav){ 
         ROS_INFO_ONCE("Start publishing setpoint.");        
-        if (mode == 0) // keyboard mode (default)  
-            pub_setpoint.publish(pose_des_keyboard);
-        else // planner mode (changed mode)
-            pub_setpoint.publish(pose_des_planner);
-    }
+        if (mode == 0) {// keyboard mode (default) 
+				pose_des_keyboard.header.stamp = ros::Time::now();
+            	pub_setpoint.publish(pose_des_keyboard);
+			
+			}
+        else {// planner mode (changed mode)
+         	pose_des_planner.header.stamp = ros::Time::now();
+			pub_setpoint.publish(pose_des_planner);
+		}
+	}
     else{
         ROS_WARN_ONCE("initialization required. Still no setpoint will be publihsed");
     }

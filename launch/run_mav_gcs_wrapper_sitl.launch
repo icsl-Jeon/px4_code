@@ -3,6 +3,8 @@
 
 	<arg name = "pose_topic"  default =  "/vicon/mav_felipe/mav_felipe"/>
 	<arg name = "mav_frame_id"  default =  "iris_fpv_cam__iris__base_link"/>
+	<arg name = "target_spawn"  default =  "false"/>
+
 
 	<node pkg="tf" type="static_transform_publisher" name="map2world" args="0 0 0 0 0 0 1 /map /world 100" />
  
@@ -24,6 +26,26 @@
 
             
     </node>
+    
+     <!--target spawn at defined position -->
+	<group if = "$( arg target_spawn)" ns ="target">
+	<include file="$(find turtlebot_gazebo)/launch/includes/kobuki.launch.xml">
+		<arg name="base" value="kobuki"/>
+		<arg name="stacks" value="hexagons"/>
+		<arg name="robot_name" value="target"/>	 
+		<arg name="3d_sensor" value="kinect"/>
+		<arg name="init_pose" value="-x 2.5 -y 1.0"/>
+	</include>
+
+
+	<node pkg="turtlebot_teleop" type="turtlebot_teleop_key" name="turtlebot_teleop_keyboard"  output="screen" launch-prefix="xterm -e">
+		<param name="scale_linear" value="0.5" type="double"/>
+		<param name="scale_angular" value="1.5" type="double"/>
+		<remap from="turtlebot_teleop_keyboard/cmd_vel" to="cmd_vel_mux/input/teleop"/>
+	</node> 
+
+	</group>
+
 
    <!--mav gcs-->
        <node name="mav_gcs_node" pkg="px4_code" type="mav_gcs_node">

@@ -6,7 +6,7 @@
               
         <param name="mav_frame_id" value="/vicon/mav_felipe/mav_felipe"/>
         <param name="world_frame_id" value="/world"/>
-        <param name="external_pose_topic" value="/zed/pose"/>
+        <param name="external_pose_topic" value="/zed/zed_node/pose"/>
 
         <param name="pose_on" value="true"/>
            
