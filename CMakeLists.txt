@@ -91,3 +91,7 @@ add_executable(tf2poseStamped_node src/tf_to_posestamped_node.cpp )
 target_link_libraries(tf2poseStamped_node ${catkin_LIBRARIES} )
 
 
+add_executable(poseStamped2tf_node src/posestamped_to_tf_node.cpp )
+target_link_libraries(poseStamped2tf_node ${catkin_LIBRARIES} )
+
+
