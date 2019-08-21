@@ -6,6 +6,8 @@
         <arg name="world_name" value="$(find px4)/Tools/sitl_gazebo/worlds/iris.world"/> 
     </include> -->
 
+<node pkg="tf" type="static_transform_publisher" name="world2map" args="0 0 0 0 0 0 1 world map 50" />
+
     <!--mav gcs-->
     <node name="mav_gcs_node" pkg="px4_code" type="mav_gcs_node">
         <param name="planner_node_name" value="/planner_client"/>         
