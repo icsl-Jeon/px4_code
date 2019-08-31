@@ -11,16 +11,11 @@ roscpp
 geometry_msgs
 tf
 tf_conversions
-#qt_build
+qt_build
 rosgraph_msgs
 )
 
 find_package(Eigen3 REQUIRED NO_MODULE)
-find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui)
-
-
-include(${QT_USE_FILE})
-include_directories(include  ${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
 
 ##############################################################################
 # Qt Environment
@@ -28,9 +23,7 @@ include_directories(include  ${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_AUTOUIC ON) 
 # this comes from qt_build's qt-ros.cmake which is automatically 
 # included via the dependency call in manifest.xml
-
-# rosbuild_prepare_qt4(QtCore QtGui) # Add the appropriate components to the component list here
-
+rosbuild_prepare_qt4(QtCore QtGui) # Add the appropriate components to the component list here
 set(QT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qt_src/px4_gcs)
 set(QT_FORMS ${QT_DIR}/mainwindow.ui) # by adding this, the catkin build make ui_mainWindow.h
 file(GLOB QT_MOC   ${QT_DIR}/*.h)

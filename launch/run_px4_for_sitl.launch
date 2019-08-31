@@ -7,8 +7,8 @@
 </include>
 -->
 
-<arg name = "world_name" default = "map2"/>
-<arg name="world_file" default="$(find px4_code)/worlds/map2_iris_fpv_cam.world"/> 
+<arg name = "world_name" default = "map3"/>
+<arg name="world_file" default="$(find px4_code)/worlds/$(arg world_name)_iris_fpv_cam.world"/> 
 <arg name="target_name" default="target"/>
 <arg name="spawn_target" default = "false"/>
 <arg name="display" default = "true"/>
@@ -18,7 +18,7 @@
     <arg name="gui" value="false"/> 
 	<!--ros plugins should be disabled! for world file -->
 	<arg name="world_name" value="$(arg world_file)"/> 
-	<arg name="verbose" value="false"/> 
+	<arg name="verbose" value="true"/> 
 </include>
 
 <!--mavlink-->
