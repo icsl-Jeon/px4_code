@@ -97,6 +97,20 @@ You might want to try this package for path generation where you can directly in
 
 Clone here :  <https://github.com/icsl-Jeon/traj_gen>
 
+### (5) qt4 (required on Ubuntu 18.04)
+```
+sudo apt-get install qt4-dev-tools
+```
+
+2. Install 
+
+```
+cd ~/catkin_ws
+catkin build px4_code
+```
+
+If build fails due to service related files (~Request.h or ~Response.h), then comment all the ```add_executable``` and try build. If it succeeded, then uncomment the above lines and re-try.  
+
 ## Getting started
 
 ____
