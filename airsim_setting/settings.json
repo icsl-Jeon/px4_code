@@ -1,0 +1,87 @@
+{
+    "SettingsVersion": 1.2,
+    "SimMode": "Multirotor",
+    "Vehicles": {
+        "PX4": {
+            "VehicleType": "PX4Multirotor",
+            "UseSerial": false,
+            "UseTcp": true,
+            "TcpPort": 4560,
+            "UdpPort" : 14580,
+            "params": {
+              "NAV_RCL_ACT": 0,
+              "NAV_DLL_ACT": 0,
+              "LPE_LAT": 47.641468,
+              "LPE_LON": -122.140165,
+              "COM_OBL_ACT": 1
+            },
+            "OriginGeopoint": {
+              "Latitude": 22.915464,
+              "Longitude": -59.975619,
+               "Altitude": 20
+              },            
+            "Cameras": {
+                "front_center_custom": {
+                  "CaptureSettings": [
+                    {
+                      "PublishToRos": 1,
+                      "ImageType": 0,
+                      "Width": 640,
+                      "Height": 480,
+                      "FOV_Degrees": 27,
+                      "DepthOfFieldFstop": 2.8,
+                      "DepthOfFieldFocalDistance": 200.0, 
+                      "DepthOfFieldFocalRegion": 200.0,
+                      "TargetGamma": 1.5
+                    }
+                  ],
+                  "X": 0.50, "Y": 0, "Z": 0.10,
+                  "Pitch": 0, "Roll": 0, "Yaw": 0
+                },
+                "front_left_custom": {
+                  "CaptureSettings": [
+                    {
+                      "PublishToRos": 1,
+                      "ImageType": 0,
+                      "Width": 672,
+                      "Height": 376,
+                      "FOV_Degrees": 90,
+                      "TargetGamma": 1.5
+                    }, 
+                    {
+                      "PublishToRos": 1,
+                      "ImageType": 1,
+                      "Width": 672,
+                      "Height": 376,
+                      "FOV_Degrees": 90,
+                      "TargetGamma": 1.5
+                    }
+                  ],
+                  "X": 0.50, "Y": -0.06, "Z": 0.10,
+                  "Pitch": 0.0, "Roll": 0.0, "Yaw": 0.0
+                },
+                "front_right_custom": {
+                  "CaptureSettings": [
+                    {
+                      "PublishToRos": 1,
+                      "ImageType": 0,
+                      "Width": 672,
+                      "Height": 376,
+                      "FOV_Degrees": 90,
+                      "TargetGamma": 1.5
+                    }
+                  ],
+                  "X": 0.50, "Y": 0.06, "Z": 0.10,
+                  "Pitch": 0.0, "Roll": 0.0, "Yaw": 0.0
+                }
+            
+            }    
+        }
+    },
+
+    "SubWindows": [
+        {"WindowID": 0, "ImageType": 0, "CameraName": "front_left_custom", "Visible": true},
+        {"WindowID": 1, "ImageType": 0, "CameraName": "front_center_custom", "Visible": true},
+        {"WindowID": 2, "ImageType": 0, "CameraName": "front_right_custom", "Visible": true}
+      ]
+}

@@ -12,7 +12,9 @@ Visit here for instruction video for SITL:
 
 https://www.youtube.com/watch?v=9QvqmMlA_oY
 
+## Update for airsim simulation
 
+2020/1/17 : I configured launch files for [airsim](https://github.com/microsoft/AirSim/) simulation.  
 
 ## Introduction 
 
@@ -91,13 +93,13 @@ In this package, we will extract tf information coming from gazebo in SITL. In o
 
 <http://wiki.ros.org/gazebo2rviz>
 
-### (4) traj_gen
+#### (4) traj_gen
 
 You might want to try this package for path generation where you can directly infuse control pose. 
 
 Clone here :  <https://github.com/icsl-Jeon/traj_gen>
 
-### (5) qt4 (required on Ubuntu 18.04)
+#### (5) qt4 (required on Ubuntu 18.04)
 ```
 sudo apt-get install qt4-dev-tools
 ```
@@ -111,7 +113,7 @@ catkin build px4_code
 
 If build fails due to service related files (~Request.h or ~Response.h), then comment all the ```add_executable``` and try build. If it succeeded, then uncomment the above lines and re-try.  
 
-## Getting started
+## Getting started (Gazebo simulation)
 
 ____
 
@@ -281,5 +283,57 @@ rosrun px4_code mav_gcs_node
 
 
 
-###  
+## Getting started (Airsim simulation)
+
+____
+
+### 1. Airsim and px4 configuration 
+#### (1) Install Airsim 
+```
+$cd ~/catkin_ws/src/
+$https://github.com/microsoft/AirSim.git
+$cd ./Airsim 
+$./setup.sh
+$./build.sh
+```
+#### (2) build ros packages
+```
+$cd ~/catkin_ws
+$catkin build airsim_ros_pkgs
+$catkin build arisim_tutorial_pkgs
+```
+
+#### (3) px4 1.9.2 
+```
+$git clone https://github.com/PX4/Firmware.git
+$cd Firmware
+$git checkout v1.9.2  # Pick a well known "good" release tag.
+```
+
+#### (4) Upload *settings.json* for spawning px4 vehicle 
+```
+$ roscd px4_code
+$ cp ./airsim_setting/settings.json ~/Documents/Airsim/settings.json
+```
+
+#### (5) Configure through QGC (Currently, it is only availalbe before mavros launching)
+```EKF_HGT_MODE = GPS ``` and ```EKF_AID_MAKE = GPS```
+
+### 2. Run Program
+
+#### (1) Prepare SITL
+```
+cd ~/Firmware 
+make px4_sitl_default none
+```
+
+#### (2) launch px4_code (pointcloud is available)
+```
+roslaunch px4_code airsim_sitl.launch
+```
+
+#### (3) Enjoy ! - JBS
+
+
+
 
