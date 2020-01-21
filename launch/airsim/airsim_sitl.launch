@@ -3,16 +3,17 @@
 
 	<arg name = "pose_topic"  default =  "/vicon/mav_felipe/mav_felipe"/>
 	<arg name = "airsim_world_frame"  default =  "/world_enu"/>
-	<arg name = "airsim_drone_frame"  default =  "/PX4/odom_local_ned"/>
+	<arg name = "airsim_drone_frame"  default =  "/PX4/true_tf_ned"/>
+	<!--arg name = "airsim_drone_frame"  default =  "/PX4/odom_local_ned"/-->
 	<arg name = "mav_frame_id"  default =  "iris_fpv_cam__iris__base_link"/>
 
 
-	<node pkg="tf" type="static_transform_publisher" name="map_matching" args="0 0 0 0 0 0 1  $(arg airsim_world_frame) /map 100" />
-	<node pkg="tf" type="static_transform_publisher" name="drone_matching" args="0 0 0 0 1 0 0 $(arg airsim_drone_frame) $(arg mav_frame_id) 100" />
+	<node pkg="tf" type="static_transform_publisher" name="map_matching" args="0 0 0 0 0 0 1   $(arg airsim_world_frame) /map 100" />
+	<node pkg="tf" type="static_transform_publisher" name="drone_matching" args="0 0 0 1 0 0 0 $(arg airsim_drone_frame) $(arg mav_frame_id) 100" />
  
 <!--tf from airsim to external pose topic-->	
     <node name="tf2pose" pkg="px4_code" type="tf2poseStamped_node" output="screen">   
-	  <param name="map_frame" value="map"/>
+	    <param name="map_frame" value="world_enu"/>
         <param name="base_frame" value="$(arg mav_frame_id)"/>
         <param name="output_pose_topic" value="$(arg pose_topic)"/>
 	</node>

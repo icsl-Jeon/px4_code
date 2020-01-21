@@ -71,7 +71,8 @@ class MavWrapper{
         ros::ServiceServer server_switch_mode; // 
 
         unsigned int mode = 0; // 0: keyboard 1: planner setpoint 
-        
+        double increment_xyz = 0.05 ;// defalut 
+        double increment_yaw = 3.141592 / 8; // defalut 
         double hovering_height;
         ros::Duration mav_init_timeout; // we will request mav_init with this timeouts
 

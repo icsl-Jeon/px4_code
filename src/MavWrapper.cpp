@@ -15,7 +15,7 @@ MavWrapper::MavWrapper():nh("~"){
     nh.param<bool>("pose_cov_on",is_cov,false);    
     nh.param<bool>("odom_on",is_cov,false);    
 
-    
+
     
     nh.param<double>("hovering_height",hovering_height,1.0);
     double time_out; // sec 
@@ -183,12 +183,33 @@ bool MavWrapper::init_home_callback(px4_code::InitHomeRequest & req,px4_code::In
 bool MavWrapper::keyboard_callback(px4_code::KeyboardInputRequest & req,px4_code::KeyboardInputResponse & resp){
     std::string keyinput = req.key;
     bool is_success = false;     
-    double increment_xyz = 0.05;
-    double increment_yaw = 3.141592 / 8; // maybe to be tuned  
+    // double increment_xyz = 0.05;
+    // double increment_yaw = 3.141592 / 8; // maybe to be tuned  
     Eigen::Vector4d move_pose; move_pose.setZero();
     
     // prepare delta pose  
     switch (tolower(keyinput.c_str()[0])){
+        case 'o' :{
+            increment_xyz -= 0.02;
+            ROS_INFO("Decreased linear step. current: %f",increment_xyz);
+            break;
+
+        }
+        case 'p' :{
+            increment_xyz += 0.02;
+            ROS_INFO("Increased linear step. current: %f",increment_xyz);
+            break;
+        }        
+        case 'k' :{
+            increment_yaw -= 3.141592 / 12;
+            ROS_INFO("Decreased yaw step. current: %f",increment_yaw);
+            break;            
+        }                
+        case 'l' :{
+            increment_yaw += 3.141592 / 12;
+            ROS_INFO("Increased yaw step. current: %f",increment_yaw);
+            break;            
+        }        
         case 'w': 
             move_pose(0) = increment_xyz;
             break;            
