@@ -75,7 +75,8 @@ class MavWrapper{
         double increment_yaw = 3.141592 / 8; // defalut 
         double hovering_height;
         ros::Duration mav_init_timeout; // we will request mav_init with this timeouts
-
+        bool no_mavros_mode = false; // do we just use this for keyboard operation?
+        
     public:        
         MavWrapper();        
         ~MavWrapper();

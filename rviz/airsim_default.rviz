@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Grid1
         - /TF1
         - /TF1/Frames1
         - /Odometry1
@@ -15,8 +16,10 @@ Panels:
         - /Pose2
         - /PointCloud22
         - /Pose3
-      Splitter Ratio: 0.5957821011543274
-    Tree Height: 256
+        - /Pose4
+        - /Image2
+      Splitter Ratio: 0.3980769217014313
+    Tree Height: 94
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -58,7 +61,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 100
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz/TF
@@ -66,22 +69,18 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        PX4:
-          Value: false
-        PX4/odom_local_ned:
-          Value: false
-        base_link:
-          Value: false
-        base_link_frd:
-          Value: false
-        front_center_custom_body:
+        NPC_2_enu:
           Value: true
-        front_center_custom_body/static:
-          Value: false
-        front_center_custom_optical:
-          Value: false
-        front_center_custom_optical/static:
-          Value: false
+        NPC_2_ned:
+          Value: true
+        PX4:
+          Value: true
+        PX4/odom_local_ned:
+          Value: true
+        base_link:
+          Value: true
+        base_link_frd:
+          Value: true
         front_left_custom_body:
           Value: false
         front_left_custom_body/static:
@@ -98,20 +97,18 @@ Visualization Manager:
           Value: false
         front_right_custom_optical/static:
           Value: false
-        iris_fpv_cam__iris__base_link:
-          Value: true
         map:
           Value: true
         map_ned:
-          Value: false
+          Value: true
         odom:
-          Value: false
+          Value: true
         odom_ned:
-          Value: false
+          Value: true
         world_enu:
-          Value: false
+          Value: true
         world_ned:
-          Value: false
+          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -120,11 +117,10 @@ Visualization Manager:
       Tree:
         world_ned:
           PX4:
+            NPC_2_ned:
+              NPC_2_enu:
+                {}
             PX4/odom_local_ned:
-              front_center_custom_body/static:
-                {}
-              front_center_custom_optical/static:
-                {}
               front_left_custom_body/static:
                 {}
               front_left_custom_optical/static:
@@ -133,13 +129,8 @@ Visualization Manager:
                 {}
               front_right_custom_optical/static:
                 {}
-            front_center_custom_body:
-              {}
-            front_center_custom_optical:
-              {}
             front_left_custom_body:
-              iris_fpv_cam__iris__base_link:
-                {}
+              {}
             front_left_custom_optical:
               {}
             front_right_custom_body:
@@ -188,7 +179,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /airsim_node/PX4/front_left_custom/Scene
+      Image Topic: /airsim_node/PX4/front_right_custom/Infrared
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -254,11 +245,11 @@ Visualization Manager:
       Name: Pose
       Shaft Length: 1
       Shaft Radius: 0.05000000074505806
-      Shape: Arrow
+      Shape: Axes
       Topic: /mavros/local_position/pose
       Unreliable: false
       Value: true
-    - Alpha: 0.6000000238418579
+    - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
         Max Value: 10
@@ -281,7 +272,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.029999999329447746
+      Size (m): 0.07999999821186066
       Style: Flat Squares
       Topic: /rtabmap/cloud_map
       Unreliable: false
@@ -303,9 +294,36 @@ Visualization Manager:
       Topic: /mavros/setpoint_position/local
       Unreliable: false
       Value: true
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.10000000149011612
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.30000001192092896
+      Head Radius: 0.10000000149011612
+      Name: Pose
+      Shaft Length: 1
+      Shaft Radius: 0.05000000074505806
+      Shape: Axes
+      Topic: /actor_pose
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /airsim_node/PX4/front_right_custom/Scene
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 0; 0; 0
     Default Light: true
     Fixed Frame: world_enu
     Frame Rate: 30
@@ -331,35 +349,35 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 10
+      Distance: 30.836727142333984
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.13064511120319366
+        Y: 17.466489791870117
+        Z: -12.981898307800293
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4503985047340393
+      Pitch: 1.035399317741394
       Target Frame: iris_fpv_cam__iris__base_link
       Value: Orbit (rviz)
-      Yaw: 3.450401782989502
+      Yaw: 3.650430202484131
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1025
+  Height: 743
   Hide Left Dock: false
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000002ea00000363fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d0000018b000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006501000001ce000001d20000001600ffffff00000001000001a900000363fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000363000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073d0000003efc0100000002fb0000000800540069006d006501000000000000073d000002eb00fffffffb0000000800540069006d006501000000000000045000000000000000000000044d0000036300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000020a00000249fc020000000cfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000000e9000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d006100670065010000010c000000cf0000000000000000fb0000000a0049006d00610067006501000001e1000000a90000000000000000fb0000000a0049006d006100670065010000012c000000e90000001600fffffffb0000000a0049006d006100670065010000021b0000006b0000001600ffffff00000001000001a900000363fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000363000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d0065010000000000000780000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000005700000024900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -368,6 +386,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1853
-  X: 67
-  Y: 27
+  Width: 1920
+  X: 4
+  Y: 363

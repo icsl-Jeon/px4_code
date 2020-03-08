@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+	<arg name =  "drone_name" default = "drone_1" />
+	<arg name =  "actor_name" default = "NPC_2" />
+
+	<arg name = "pose_topic"  default =  "/vicon/mav_felipe/mav_felipe"/>
+   	<arg name = "pose_topic_actor"  default =  "/actor_pose"/>
+ 
+	<arg name = "airsim_local_origin_ned"  default =  "/world_enu"/>
+	<arg name = "airsim_drone_frame"  default =  "/$(arg drone_name)"/>
+
+	<node pkg="tf" type="static_transform_publisher" name="attach_enu" args="0 0 0 1 0 0 0  $(arg airsim_drone_frame) /$(arg drone_name)_enu 100" />
+    <node pkg="tf" type="static_transform_publisher" name="attach_enu_actor" args="0 0 0 1 0 0 0  $(arg actor_name)_ned /$(arg actor_name)_enu 100" />
+
+	<!-- <node pkg="tf" type="static_transform_publisher" name="drone_matching" args="0 0 0 1 0 0 0 $(arg airsim_drone_frame) $(arg mav_frame_id) 100" /> ned to enu -->
+ 
+    <!--tf from airsim to external pose topic (vicon). In airsim, we don't need external topic (vicon). So we just feed dummy pose -->	
+    <node name="tf2pose" pkg="px4_code" type="tf2poseStamped_node" output="screen">   
+	    <param name="map_frame" value="$(arg airsim_drone_frame)"/>
+        <param name="base_frame" value="/$(arg drone_name)_enu"/>
+        <param name="output_pose_topic" value="$(arg pose_topic)"/>
+	</node>
+	
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find px4_code)/rviz/airsim_default.rviz"/>
+  	
+    <!--airsim -->	
+    <!-- AirSim ROS Wrapper -->
+	<include file="$(find px4_code)/launch/airsim_simple_flight/airsim_node.launch">
+		<!-- <arg name = "drone_name" value = "$(arg drone_name)"/> -->
+	</include>
+    <!-- Vehicle Dynamic Constraints -->
+	<include file="$(find px4_code)/launch/airsim_simple_flight/dynamic_constraints.launch"/>
+    <!-- Simple PID Position Controller -->
+	<include file="$(find px4_code)/launch/airsim_simple_flight/position_controller_simple.launch">
+			<arg name = "drone_name" value = "$(arg drone_name)"/>	
+	</include>
+ 
+    <node name="tf2pose_actor" pkg="px4_code" type="tf2poseStamped_node" output="screen">   
+	    <param name="map_frame" value="$(arg airsim_drone_frame)"/>
+        <param name="base_frame" value="/$(arg actor_name)_enu"/>
+        <param name="output_pose_topic" value="$(arg pose_topic_actor)"/>
+	</node>
+    
+    <!--mav wrapper-->
+    <node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">                 
+        <param name="world_frame_id" value="/map"/>
+        <param name="external_pose_topic" value="$(arg pose_topic)"/>
+        <param name="pose_on" value="true"/>         
+        <param name="no_mavros" value="true"/>            
+    </node>
+
+   <!--mav gcs-->
+       <node name="mav_gcs_node" pkg="px4_code" type="mav_gcs_node">
+            <arg name="planner_node_name" value="/planner_client"/>         
+		</node>
+
+</launch>

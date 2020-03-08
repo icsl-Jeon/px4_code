@@ -15,8 +15,8 @@ MavWrapper::MavWrapper():nh("~"){
     nh.param<bool>("pose_cov_on",is_cov,false);    
     nh.param<bool>("odom_on",is_cov,false);    
 
+    nh.param<bool>("no_mavros",no_mavros_mode,false);    
 
-    
     nh.param<double>("hovering_height",hovering_height,1.0);
     double time_out; // sec 
     nh.param<double>("init_timeout",time_out,2.0);
@@ -283,8 +283,8 @@ void MavWrapper::run(){
             mav_init();
         // If it is initialized do the followings 
         else{
-            if (is_mavros_connected ) 
-            publish_setpoint();
+            if (is_mavros_connected or no_mavros_mode) 
+            publish_setpoint(); 
             publish_externally_estimated_pose();
         }
 

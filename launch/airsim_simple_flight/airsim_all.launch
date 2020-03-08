@@ -1,0 +1,13 @@
+<launch> 
+	<arg name =  "drone_name" default = "drone_1" />
+<!-- AirSim ROS Wrapper -->
+	<include file="$(find px4_code)/launch/airsim_simple_flight/airsim_node.launch">
+		<!-- <arg name = "drone_name" value = "$(arg drone_name)"/> -->
+	</include>
+<!-- Vehicle Dynamic Constraints -->
+	<include file="$(find px4_code)/launch/airsim_simple_flight/dynamic_constraints.launch"/>
+<!-- Simple PID Position Controller -->
+	<include file="$(find px4_code)/launch/airsim_simple_flight/position_controller_simple.launch">
+			<arg name = "drone_name" value = "$(arg drone_name)"/>	
+	</include>
+</launch>

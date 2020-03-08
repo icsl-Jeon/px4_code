@@ -28,9 +28,9 @@ int main(int argc, char** argv){
             listener.lookupTransform(map_frame, mav_frame,ros::Time(0),transform);
         }
         catch(tf::TransformException &ex){
-            //ROS_ERROR("%s",ex.what());
-            //ros::Duration(1.0).sleep();
-            //continue;
+            ROS_ERROR("%s",ex.what());
+            ros::Duration(1.0).sleep();
+            continue;
             tf_ok = false;
 
         }
