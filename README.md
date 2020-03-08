@@ -324,7 +324,7 @@ $ cp ./airsim_setting/settings.json ~/Documents/Airsim/settings.json
 #### (1) Prepare SITL
 ```
 cd ~/Firmware 
-make px4_sitl_default none
+make px4_sitl_default none_iris
 ```
 
 #### (2) launch px4_code (pointcloud is available)
