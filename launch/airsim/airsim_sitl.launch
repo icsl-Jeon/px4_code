@@ -6,7 +6,7 @@
 	<arg name = "pose_topic"  default =  "/vicon/mav_felipe/mav_felipe"/>
 	<arg name = "airsim_world_frame"  default =  "/world_enu"/>
 	<arg name = "airsim_drone_frame"  default =  "/$(arg drone_name)"/>
-	<arg name =  "actor_name" default = "NPC_2" />
+	<arg name =  "actor_name" default = "CustomizationCharacter_2" />
    	<arg name = "pose_topic_actor"  default =  "/actor_pose"/>
 
 
