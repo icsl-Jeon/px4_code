@@ -47,6 +47,7 @@ Publications:
  * /mavros/vision_pose/pose [geometry_msgs/PoseStamped]
 
 Subscriptions: 
+ * /vicon/mav_felipe/mav_felipe [geometry_msgs/PoseStamped]
  * /mav_wrapper/setpoint_planning [geometry_msgs/PoseStamped]
  * /mavros/state [mavros_msgs/State]
  * /tf [tf2_msgs/TFMessage]

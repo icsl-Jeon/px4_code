@@ -13,7 +13,7 @@ MavWrapper::MavWrapper():nh("~"){
 
     nh.param<bool>("pose_on",is_pose,true);    
     nh.param<bool>("pose_cov_on",is_cov,false);    
-    nh.param<bool>("odom_on",is_cov,false);    
+    nh.param<bool>("odom_on",is_odom,false);
 
     nh.param<bool>("no_mavros",no_mavros_mode,false);    
 
@@ -131,7 +131,7 @@ bool MavWrapper::mav_init(){
 		}
     }
     else 
-        {ROS_WARN("[Mav Wrapper] initialization tried but no pose information from either mavros or external unit"); return false;};
+        {ROS_WARN_THROTTLE(2,"[Mav Wrapper] initialization tried but no pose information from either mavros or external unit"); return false;};
 }
 void MavWrapper::publish_setpoint(){    
 
