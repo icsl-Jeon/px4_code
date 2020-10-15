@@ -1,0 +1,150 @@
+<launch>
+<!-- This launch operates the drone which use lidar odometry -->
+
+<arg name = "base_link_fusion" default="base_link_fusion"/>
+<arg name = "obstMinX" value = "0"/>
+<arg name = "obstMaxX" value = "13"/>
+<arg name = "obstMinY" value = "-4"/>
+<arg name = "obstMaxY" value = "4"/>
+
+<arg name="binning_on" default="false"/>
+<arg name="software_binning_on" default="true"/>
+<arg name="software_binning_level" default="1"/>
+<arg name="triggered_on" default="true"/>
+<arg name="auto_exposure_control" default="false"/>
+<arg name="auto_gain_control" default="false"/>
+<arg name="high_dynamic_range_on" default="true"/>
+<arg name="expose_us" default="15000"/>
+<arg name="frame_rate" default="10.0"/>
+
+   <node pkg="bluefox" name="bluefox_multiple_camlidar_node" type="bluefox_multiple_camlidar_node" output="screen">
+        <param name="binning_on" type="bool" value="$(arg binning_on)"/>
+        <param name="software_binning_on" type="bool" value="$(arg software_binning_on)"/>
+        <param name="software_binning_level" type="int" value="$(arg software_binning_level)"/>
+        <param name="triggered_on" type="bool" value="$(arg triggered_on)"/>
+        <param name="aec_on" type="bool" value="$(arg auto_exposure_control)"/>
+        <param name="agc_on" type="bool" value="$(arg auto_gain_control)"/>
+        <param name="hdr_on" type="bool" value="$(arg high_dynamic_range_on)"/>
+      	<param name="expose_us" type="int" value="$(arg expose_us)"/>
+        <param name="frame_rate" type="double" value="$(arg frame_rate)"/>
+    </node>
+
+    <group ns = "lidar0">
+      <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+        <arg name="device_ip" value="192.168.2.101" />
+        <arg name="port" value="2367" />
+        <arg name="rpm" value="600" /> <!--1200? see the NUC of drone -->
+        <arg name="gps_time" value="true" />
+      </include>
+    </group>
+
+   <node pkg="rosserial_python" type="serial_node.py" name="arduino_UART" args="_port:=/dev/ttyACM0 _baud:=460800" output="screen">
+    </node>
+
+    <!-- camlidar with hsv -->
+    <node pkg = "camlidar_module" type = "hsv_target_pcl_extractor" name="target_hsv_extractor" >
+        <param name= "map_frame" value = "/map"/>
+        <param name= "baselink_id" value = "$(arg base_link_fusion)"/>
+        <param name="parameter_directory" type="string" value="$(find camlidar_module)/params/bluefox_vlp16_BS.yaml"/>
+    </node>
+
+
+<include file = "$(find mavros)/launch/px4.launch">
+    <arg name="fcu_url" value="/dev/ttyACM1:57600" />
+</include>
+
+<include file = "$(find lego_loam)/launch/run.launch">
+    <arg name = "is_bag" value = "false"/>
+</include>
+
+<node name="mav_wrapper_node" pkg="px4_code" type="mav_wrapper_node" output="screen">
+    <param name = "external_pose_topic" value = "/mapOptmization/loam_jbs_pose"/>
+    <param name="world_frame_id" value="/map"/>
+</node>
+
+
+    <!--obstacle extractor -->
+
+
+    <!-- run pointcloud_to_laserscan node -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+
+        <remap from="cloud_in" to="/full_cloud_projected"/>
+        <!--        <remap from="cloud_in" to="/octomap_point_cloud_centers"/>--> -->
+        <remap from="scan" to="/scan"/>
+        <rosparam>
+            target_frame:  base_link_fusion # Leave disabled to output scan in pointcloud frame
+            transform_tolerance: 0.02
+            min_height: -0.3
+            max_height: 0.1
+
+            angle_min: -3.1408 # -M_PI/2
+            angle_max: 3.1408 # M_PI/2
+            angle_increment: 0.0010 # M_PI/360.0
+            scan_time: 0.0333
+            range_min: 0.0
+            range_max: 100.0
+            use_inf: true
+            inf_epsilon: 100.0
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2->inf : Parallelism level
+            concurrency_level: 2
+        </rosparam>
+
+    </node>
+
+
+    <node name="nodelet_manager" pkg="nodelet" type="nodelet" args="manager" output="log">
+        <param name="num_worker_threads" value="20"/>
+    </node>
+
+    <node name="obstacle_extractor" pkg="nodelet" type="nodelet" args="load obstacle_detector/ObstacleExtractor nodelet_manager">
+        <param name="active"               value="true"/>
+        <param name="use_scan"             value="true"/>
+        <param name="use_pcl"              value="false"/>
+
+        <param name="use_split_and_merge"    value="false"/>
+        <param name="circles_from_visibles"  value="false"/>
+        <param name="discard_converted_segments" value="false"/>
+        <param name="transform_coordinates"  value="true"/>
+
+        <param name="min_group_points"     value="6"/>
+
+        <param name="max_group_distance"   value="0.3"/>
+        <param name="distance_proportion"  value="0.00628"/>
+        <param name="max_split_distance"   value="3"/>
+        <param name="max_merge_separation" value="0.3"/>
+        <param name="max_merge_spread"     value="2.0"/>
+        <param name="max_circle_radius"    value="1.5"/>
+        <param name="radius_enlargement"   value="0.3"/>
+
+        <param name="min_x_limit"   value="$(arg obstMinX)"/>
+        <param name="max_x_limit"   value="$(arg obstMaxX)"/>
+        <param name="min_y_limit"   value="$(arg obstMinY)"/>
+        <param name="max_y_limit"   value="$(arg obstMaxY)"/>
+
+        <param name="frame_id"             value="map_wall_align"/>
+    </node>
+
+    <node name="obstacle_tracker" pkg="nodelet" type="nodelet" args="load obstacle_detector/ObstacleTracker nodelet_manager">
+        <param name="active"                  value="true"/>
+
+        <param name="loop_rate"               value="50.0"/>
+        <param name="tracking_duration"       value="4.0"/>
+        <param name="min_correspondence_cost" value="1.0"/>
+        <param name="std_correspondence_dev"  value="0.15"/>
+        <param name="process_variance"        value="0.001"/>
+        <param name="process_rate_variance"   value="0.002"/>
+        <param name="measurement_variance"    value="0.4"/>
+
+        <param name="frame_id"                value="map_wall_align"/>
+
+        <remap from="tracked_obstacles" to="obstacles"/>
+    </node>
+
+
+
+</launch>

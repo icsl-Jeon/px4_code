@@ -85,6 +85,13 @@ include
 ${catkin_INCLUDE_DIRS}
 )
 
+
+## Declare a C++ library
+add_library(${PROJECT_NAME}
+  src/MavWrapper.cpp  
+ )
+
+
 add_executable(mav_wrapper_node src/mav_wrapper_main.cpp src/MavWrapper.cpp)
 target_link_libraries(mav_wrapper_node
   ${catkin_LIBRARIES} 

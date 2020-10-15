@@ -14,8 +14,9 @@
     </node>
 
     <!--traj gen-->
-    <node name="traj_gen_ui" pkg="traj_gen" type="traj_gen_client">
+    <node name="traj_gen_ui" pkg="traj_gen" type="traj_gen_client" output= "screen">
         <remap from="/traj_gen_ui/control_pose" to="/mav_wrapper/setpoint_planning"/>
+		<param name = "spline_save_dir" value = "/home/jbs/target_prior_2floor.txt"/>
     </node>
 
 </launch>
