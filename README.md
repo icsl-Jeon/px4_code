@@ -14,7 +14,8 @@ https://www.youtube.com/watch?v=9QvqmMlA_oY
 
 ## Update for airsim simulation
 
-2020/1/17 : I configured launch files for [airsim](https://github.com/microsoft/AirSim/) simulation.  
+2021/6/30: CmakeList.txt update for noetic build (Qt5) 
+2020/1/17: I configured launch files for [airsim](https://github.com/microsoft/AirSim/) simulation.  
 
 ## Introduction 
 

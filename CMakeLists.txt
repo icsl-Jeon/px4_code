@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(px4_code)
 
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 set(CMAKE_BUILD_TYPE Release)
 find_package(catkin REQUIRED COMPONENTS 
 message_generation
@@ -16,30 +16,35 @@ rosgraph_msgs
 )
 
 find_package(Eigen3 REQUIRED NO_MODULE)
-find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui)
+message("${qt_gui_cpp_USE_QT_MAJOR_VERSION}")
 
 
-include(${QT_USE_FILE})
-include_directories(include  ${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
+find_package(Qt5Widgets REQUIRED)
+ include_directories(${Qt5Widgets_INCLUDES})
+ add_definitions(${Qt5Widgets_DEFINITIONS})
+  
+set(CMAKE_AUTORCC true) # to include qt resource collection
+set(CMAKE_INCLUDE_CURRENT_DIR ON) # This finds ui_*.h
+
+
 
 ##############################################################################
 # Qt Environment
 ##############################################################################
-set(CMAKE_AUTOUIC ON) 
-# this comes from qt_build's qt-ros.cmake which is automatically 
-# included via the dependency call in manifest.xml
 
-# rosbuild_prepare_qt4(QtCore QtGui) # Add the appropriate components to the component list here
+
 
 set(QT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qt_src/px4_gcs)
 set(QT_FORMS ${QT_DIR}/mainwindow.ui) # by adding this, the catkin build make ui_mainWindow.h
 file(GLOB QT_MOC   ${QT_DIR}/*.h)
+
 file(GLOB QT_SOURCES ${QT_DIR}/*.cpp)
-QT4_WRAP_UI(QT_FORMS_HPP ${QT_FORMS})
-message("qt form: ${QT_DIR}")
-QT4_WRAP_CPP(QT_MOC_HPP ${QT_MOC})
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
-message("qt form path: ${CMAKE_CURRENT_BINARY_DIR}")
+
+
+qt5_wrap_cpp(QT_MOC_HPP ${QT_MOC})
+qt5_wrap_ui(QT_FORMS_HPP ${QT_FORMS})
+
+
 
 add_service_files(
   FILES
@@ -97,8 +102,8 @@ target_link_libraries(mav_wrapper_node
   ${catkin_LIBRARIES} 
 )
 
-add_executable(mav_gcs_node ${QT_DIR}/main.cpp  ${QT_FORMS_CPP} ${QT_SOURCES} ${QT_MOC_HPP})
-target_link_libraries(mav_gcs_node ${catkin_LIBRARIES} ${QT_LIBRARIES})
+add_executable(mav_gcs_node ${QT_DIR}/main.cpp  ${QT_FORMS_HPP} ${QT_SOURCES} ${QT_MOC_HPP})
+target_link_libraries(mav_gcs_node ${catkin_LIBRARIES}  Qt5::Widgets)
 
 
 add_executable(tf2poseStamped_node src/tf_to_posestamped_node.cpp )

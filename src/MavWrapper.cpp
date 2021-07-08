@@ -44,7 +44,6 @@ MavWrapper::MavWrapper():nh("~"){
     
 
 
-    clock_server = nh.advertise<rosgraph_msgs::Clock>("/clock",1);
     sub_state =nh.subscribe("/mavros/state", 10, &MavWrapper::cb_state,this);
     pub_setpoint = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 10);    
     
@@ -276,7 +275,6 @@ void MavWrapper::run(){
     while(ros::ok()){
                         
         publish_externally_estimated_pose(); // vision pose publish for mavros
-        clock_server.publish(ros::Time::now());
 
         // still not initialized
         if(not is_init_mav)  
