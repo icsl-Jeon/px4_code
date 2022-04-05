@@ -83,7 +83,7 @@ This package is not a ROS package! In our case, this package is required for SIT
 git clone https://github.com/PX4/Firmware.git
 ```
 
-*No build is mandatory at present step in STIL. Follow [make instruction](##mavros)*
+*No build is mandatory at present step in SITL. Follow [make instruction](##mavros)*
 
 #### (2) mavros
 
